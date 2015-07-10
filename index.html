@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/xhtml+xml; charset=UTF-8" http-equiv="content-type" />
+<title>GamessQ</title>
+</head>
+<body>
+<h1 align="center">GamessQ Version 1.2</h1>
+<h2 align="center">A companion to <a href="http://www.msg.chem.iastate.edu/GAMESS/">GAMESS</a> and <a href="http://www.scl.ameslab.gov/MacMolPlt/">MacMolPlt</a></h2>
+<h3 align="left">What is it?</h3>
+<p align="left">Very simply gamessQ provides a queueing functionality for GAMESS computations running on your local desktop/laptop. gamessQ is a gui application and provides drag and drop fucntionality for running jobs with gamess that would otherwise require the use of the command line.</p>
+<h3 align="left">Key Features:</h3>
+<ul>
+<li>Runs on Mac OS X, Windows and Linux</li>
+<li>Automatic execution of GAMESS jobs.</li>
+<li>Allows you to specify the number of processors to use for each job.</li>
+<li>Advanced process management allowing the user to pause and resume jobs
+without loosing data.</li>
+<li>Backend daemon keeps the queue active even when you close the interface or
+log out(Mac OS X and Linux).</li>
+<li>Batch job operations. Every job operation can be done to multiple jobs at a
+time, allowing you to more easily manage a large queue.</li>
+<li>A command line interface allowing you to manage the entire queue without a
+GUI (see the Man page for details)</li>
+<li>Interface provided in MacMolPlt to send GAMESS jobs to gamessQ and in gamessQ to open the output in MacMolPlt.</li>
+<li><a href="gamessQ.html">gamessQ manual</a></li>
+</ul>
+<h3>It does not provide:</h3>
+<ul>
+  <li>The ablity to send tasks to other hosts.</li>
+  <li>The ability to run programs other than GAMESS</li>
+</ul>
+<h2>Download:</h2>
+<p>Precompiled binaries are available for MacOS X and Windows. A source code tar file is provided for Linux (refer to the INSTALL file in the tar file for installation instructions).</p>
+<p>gamessQ for MacOS X (universal binary)</p>
+<p>gamessQ for Windows</p>
+<p>Source code (under GPL 3 license)</p>
+<h2>A Quick Walkthrough:</h2>
+<p>The first time you start GamessQ, you should be presented with a
+configuration dialog. The most important things here are the spool directory
+and the GAMESS path.</p>
+<p><b>Spool Directory:</b> This is the location where gamessq will store all
+its temporary data. Every time you add a job to the queue, the input file will
+get copied here, and the output files will be stored here until the job is
+removed from the queue.  Unless you have a good reason to change the location,
+the default should work just fine for most people.</p>
+<p><b>GAMESS Path:</b> This is the directory containing the GAMESS
+executables.</p>
+<p>Now that you've set up a few things, you're ready to enqueue a fiew jobs. To
+add jobs to the queue, you have a couple options. You can click the add button
+on the left of the toolbar, or you can simply drag and drop into the window
+(windows and linux) or onto the icon (Mac OS X). You will then be asked how
+many processors you want to use for those jobs.</p>
+<p>You can now close the GamessQ window, and go do something else, and your
+jobs will be run in the background. GamessQ has a part of the program that runs
+in the background (or as a tray icon in windows) that keeps the queue moving
+even when you close the main window. Under Mac OS X and Linux your jobs will
+keep going even when you log out.</p>
+<p>Once a job is completed there are two different ways you can save it back to
+a useful location. You can click Job&gt;Save to File, which will pop up a save
+dialog where you can tell it where and under what name you want the file saved,
+it will then save two (or three for some jobs) files: <i>filename</i>.log,
+<i>filename</i>.dat and possibly <i>filename</i>.irc. You can also click
+Job&gt;Save to Folder, which will save the output files to <i>JobName</i>.log,
+<i>JobName</i>.dat, and <i>JobName</i>.dat, this option allows you to save the
+output from multiple jobs at the same time.</p>
+</body>
+</html>

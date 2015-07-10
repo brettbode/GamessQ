@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>inp</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>GAMESSInput</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+		</dict>
+	</array>
+	<key>CFBundleExecutable</key>
+	<string>gamessq</string>
+	<key>CFBundleGetInfoString</key>
+	<string>A queue manager for GAMESS</string>
+	<key>CFBundleIconFile</key>
+	<string>GamessQ.icns</string>
+	<key>CFBundleIdentifier</key>
+	<string>gov.ameslab.GamessQ</string>
+	<key>CFBundleName</key>
+	<string>GamessQ</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>BMBg</string>
+	<key>CFBundleVersion</key>
+	<string>1.2</string>
+	<key>LSExecutableArchitectures</key>
+	<array>
+		<string>i386</string>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,163 @@
+#! /bin/bash
+#
+# Copyright (C) 2008 Iowa State University 
+#
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later
+# version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+SRCDIR="@srcdir@"
+APPNAME="GamessQ"
+EXECs="gamessq gamessqd"
+EXECDIR="@top_builddir@/src"
+APPDIR="$APPNAME.app"
+
+if [ ! -d "$APPDIR" ]
+then
+echo "Building $APPDIR directory..."
+mkdir "$APPDIR"
+mkdir "$APPDIR/Contents"
+mkdir "$APPDIR/Contents/MacOS"
+mkdir "$APPDIR/Contents/Frameworks"
+mkdir "$APPDIR/Contents/Resources"
+fi
+
+echo "Copying Info.plist..."
+cp "$SRCDIR/src/Info.plist" "$APPDIR/Contents/"
+
+echo "Copying images..."
+for file in `ls "$SRCDIR/src/icons" |grep png`
+do
+echo $file
+cp "$SRCDIR/src/icons/$file" "$APPDIR/Contents/Resources/$file"
+done
+echo "$APPNAME.icns"
+cp "$SRCDIR/src/icons/$APPNAME.icns" "$APPDIR/Contents/Resources/"
+
+#
+# This function filters the list if libraries given by otool looking for the
+# ones we need to copy into our bundle. this function should return 0 if the
+# library is one we need to copy, and fail otherwise
+#
+filter_lib() {(
+	set -e
+	if echo "$1" | grep 'libwx'; then exit 0; fi
+	echo "$1" | grep -v '^/System/Library/Frameworks'
+	exit 1
+) > /dev/null; }
+
+###############################################################################
+#
+# You Should never need to touch anything beyond this point. Do so at your own
+# personal risk!
+#
+###############################################################################
+
+get_file_path() {
+echo "$1" | sed -n 's/\(.*\/\)[^\/]*$/\1/gp'
+}
+
+get_file_name() {
+echo "$1" | sed 's/.*\/\([^\/]*\)$/\1/g'
+}
+
+find_final_link() {(
+LINKPATH="`ls -l "$1" | sed -n 's/^.* -> \\(.*\\)$/\1/gp'`"
+if [ -z "$LINKPATH" ]; then
+	echo $1
+else
+	DIR="`get_file_path "$1"`"
+	if [ -n "$DIR" ]; then cd "$DIR"; fi
+	DIR="`get_file_path "$LINKPATH"`"
+	if [ -n "$DIR" ]; then cd "$DIR"; fi
+	find_final_link "`pwd`/`get_file_name "$LINKPATH"`"
+fi
+); }
+
+# lib_base_filename execfilename libstring
+lib_base_filename() {
+if echo "$2" | grep '^@executable_path' > /dev/null; then
+	FILEPATH="`echo "$2" | sed 's/^@executable_path\///g'`"
+	if [ `echo "$FILEPATH" | cut -c1` != "/" ]; then
+		FILEPATH="`get_file_path "$1"`$FILEPATH"
+	fi
+else
+	FILEPATH="$2"
+fi
+
+# if the file doesn't exist, we fail
+if [ ! -f "$FILEPATH" ]; then
+	echo "File not Found: $FILEPATH"
+	return 1
+fi
+
+find_final_link "$FILEPATH"
+}
+
+ALL_LIBS=""
+copy_libs() {
+	for line in `otool -L "$1" | sed -n 's/\(.*[^\\ ]\) (.*/\1/gp'`
+	do
+		if filter_lib "$line"; then
+			lib="`lib_base_filename "$1" "$line"`"
+			libname="`get_file_name "$lib"`"
+
+			echo "Fixing Link: `get_file_name "$1"`->$libname"
+
+			# Correct the library links
+			install_name_tool -change "$line" \
+					"@executable_path/../Frameworks/$libname" "$1"
+
+			# Make sure we have a copy in the Frameworks directory
+			FOUND="false"
+			for item in $ALL_LIBS
+			do
+				if [ "$item" = "$lib" ]
+				then
+					FOUND="true"
+				fi
+			done
+			if [ $FOUND = "false" ]
+			then
+				ALL_LIBS="$ALL_LIBS $lib"
+				echo "Adding missing library: $libname"
+				cp "$lib" "$APPDIR/Contents/Frameworks/$libname"
+
+				# Ensure the newly copied library has the proper links
+				copy_libs "$APPDIR/Contents/Frameworks/$libname"
+
+				# Fix the libraries personal name
+				install_name_tool -id \
+						"@executable_path/../Frameworks/$libname" \
+						"$APPDIR/Contents/Frameworks/$libname"
+			fi
+		fi
+	done
+
+	# Fix stuff messed up by recursion
+	libname="`get_file_name "$1"`"
+}
+
+echo "Copying executables..."
+for file in $EXECs
+do
+echo $file
+cp "$EXECDIR/$file" "$APPDIR/Contents/MacOS"
+done
+
+echo "Fixing Links..."
+for file in $EXECs
+do
+copy_libs "$APPDIR/Contents/MacOS/$file"
+done
+

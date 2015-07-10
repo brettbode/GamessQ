@@ -1,0 +1,650 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B2998100E489D9800624A73 /* gamessqd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B2998080E489D9800624A73 /* gamessqd.cpp */; };
+		8B2998110E489D9800624A73 /* gamessqd_posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B29980A0E489D9800624A73 /* gamessqd_posix.cpp */; };
+		8B2998120E489D9800624A73 /* job.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B29980C0E489D9800624A73 /* job.cpp */; };
+		8B2998130E489D9800624A73 /* posix_job.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B29980E0E489D9800624A73 /* posix_job.cpp */; };
+		8B29981D0E48C81C00624A73 /* job.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B29980C0E489D9800624A73 /* job.cpp */; };
+		8B2998350E48C8AA00624A73 /* about_gamessq.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B29981F0E48C8AA00624A73 /* about_gamessq.cpp */; };
+		8B2998360E48C8AA00624A73 /* configuration_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B2998210E48C8AA00624A73 /* configuration_dialog.cpp */; };
+		8B2998370E48C8AA00624A73 /* confirm_overwrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B2998230E48C8AA00624A73 /* confirm_overwrite.cpp */; };
+		8B2998380E48C8AA00624A73 /* gamessq.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B2998250E48C8AA00624A73 /* gamessq.cpp */; };
+		8B2998390E48C8AA00624A73 /* gamessq_frame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B2998290E48C8AA00624A73 /* gamessq_frame.cpp */; };
+		8B29983A0E48C8AA00624A73 /* gamessq_posix_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B29982B0E48C8AA00624A73 /* gamessq_posix_client.cpp */; };
+		8B29983B0E48C8AA00624A73 /* job_options_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B29982D0E48C8AA00624A73 /* job_options_dialog.cpp */; };
+		8B29983C0E48C8AA00624A73 /* job_queue_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B29982F0E48C8AA00624A73 /* job_queue_manager.cpp */; };
+		8B29983D0E48C8AA00624A73 /* log_viewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B2998310E48C8AA00624A73 /* log_viewer.cpp */; };
+		8B29983E0E48C8AA00624A73 /* resources.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B2998330E48C8AA00624A73 /* resources.cpp */; };
+		8B2998590E48C9E200624A73 /* add-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B29984A0E48C9E200624A73 /* add-16.png */; };
+		8B29985A0E48C9E200624A73 /* add-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B29984B0E48C9E200624A73 /* add-24.png */; };
+		8B29985B0E48C9E200624A73 /* cancel-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B29984C0E48C9E200624A73 /* cancel-16.png */; };
+		8B29985C0E48C9E200624A73 /* cancel-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B29984D0E48C9E200624A73 /* cancel-24.png */; };
+		8B29985D0E48C9E200624A73 /* clear-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B29984E0E48C9E200624A73 /* clear-16.png */; };
+		8B29985E0E48C9E200624A73 /* clear-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B29984F0E48C9E200624A73 /* clear-24.png */; };
+		8B29985F0E48C9E200624A73 /* gamessq-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2998500E48C9E200624A73 /* gamessq-16.png */; };
+		8B2998600E48C9E200624A73 /* pause-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2998510E48C9E200624A73 /* pause-16.png */; };
+		8B2998610E48C9E200624A73 /* pause-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2998520E48C9E200624A73 /* pause-24.png */; };
+		8B2998620E48C9E200624A73 /* refresh-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2998530E48C9E200624A73 /* refresh-16.png */; };
+		8B2998630E48C9E200624A73 /* refresh-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2998540E48C9E200624A73 /* refresh-24.png */; };
+		8B2998640E48C9E200624A73 /* remove-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2998550E48C9E200624A73 /* remove-16.png */; };
+		8B2998650E48C9E200624A73 /* remove-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2998560E48C9E200624A73 /* remove-24.png */; };
+		8B2998660E48C9E200624A73 /* resume-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2998570E48C9E200624A73 /* resume-16.png */; };
+		8B2998670E48C9E200624A73 /* resume-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B2998580E48C9E200624A73 /* resume-24.png */; };
+		8B2998790E48CA8E00624A73 /* GamessQ.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8B2998780E48CA8E00624A73 /* GamessQ.icns */; };
+		8B29988B0E48CD9200624A73 /* gamessqd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8B2998030E489B6D00624A73 /* gamessqd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8B2998940E48D7DD00624A73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1652D9FF09D0AE7200B7783F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B2998020E489B6D00624A73;
+			remoteInfo = gamessqd;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8B2998860E48CC7C00624A73 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				8B29988B0E48CD9200624A73 /* gamessqd in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8B2998030E489B6D00624A73 /* gamessqd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gamessqd; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B2998080E489D9800624A73 /* gamessqd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gamessqd.cpp; path = src/gamessqd.cpp; sourceTree = "<group>"; };
+		8B2998090E489D9800624A73 /* gamessqd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gamessqd.h; path = src/gamessqd.h; sourceTree = "<group>"; };
+		8B29980A0E489D9800624A73 /* gamessqd_posix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gamessqd_posix.cpp; path = src/gamessqd_posix.cpp; sourceTree = "<group>"; };
+		8B29980B0E489D9800624A73 /* gamessqd_posix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gamessqd_posix.h; path = src/gamessqd_posix.h; sourceTree = "<group>"; };
+		8B29980C0E489D9800624A73 /* job.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = job.cpp; path = src/job.cpp; sourceTree = "<group>"; };
+		8B29980D0E489D9800624A73 /* job.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = job.h; path = src/job.h; sourceTree = "<group>"; };
+		8B29980E0E489D9800624A73 /* posix_job.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = posix_job.cpp; path = src/posix_job.cpp; sourceTree = "<group>"; };
+		8B29980F0E489D9800624A73 /* posix_job.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = posix_job.h; path = src/posix_job.h; sourceTree = "<group>"; };
+		8B29981F0E48C8AA00624A73 /* about_gamessq.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = about_gamessq.cpp; path = src/about_gamessq.cpp; sourceTree = "<group>"; };
+		8B2998200E48C8AA00624A73 /* about_gamessq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = about_gamessq.h; path = src/about_gamessq.h; sourceTree = "<group>"; };
+		8B2998210E48C8AA00624A73 /* configuration_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = configuration_dialog.cpp; path = src/configuration_dialog.cpp; sourceTree = "<group>"; };
+		8B2998220E48C8AA00624A73 /* configuration_dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = configuration_dialog.h; path = src/configuration_dialog.h; sourceTree = "<group>"; };
+		8B2998230E48C8AA00624A73 /* confirm_overwrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = confirm_overwrite.cpp; path = src/confirm_overwrite.cpp; sourceTree = "<group>"; };
+		8B2998240E48C8AA00624A73 /* confirm_overwrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = confirm_overwrite.h; path = src/confirm_overwrite.h; sourceTree = "<group>"; };
+		8B2998250E48C8AA00624A73 /* gamessq.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gamessq.cpp; path = src/gamessq.cpp; sourceTree = "<group>"; };
+		8B2998260E48C8AA00624A73 /* gamessq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gamessq.h; path = src/gamessq.h; sourceTree = "<group>"; };
+		8B2998270E48C8AA00624A73 /* gamessq_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gamessq_client.h; path = src/gamessq_client.h; sourceTree = "<group>"; };
+		8B2998280E48C8AA00624A73 /* gamessq_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gamessq_common.h; path = src/gamessq_common.h; sourceTree = "<group>"; };
+		8B2998290E48C8AA00624A73 /* gamessq_frame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gamessq_frame.cpp; path = src/gamessq_frame.cpp; sourceTree = "<group>"; };
+		8B29982A0E48C8AA00624A73 /* gamessq_frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gamessq_frame.h; path = src/gamessq_frame.h; sourceTree = "<group>"; };
+		8B29982B0E48C8AA00624A73 /* gamessq_posix_client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gamessq_posix_client.cpp; path = src/gamessq_posix_client.cpp; sourceTree = "<group>"; };
+		8B29982C0E48C8AA00624A73 /* gamessq_posix_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gamessq_posix_client.h; path = src/gamessq_posix_client.h; sourceTree = "<group>"; };
+		8B29982D0E48C8AA00624A73 /* job_options_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = job_options_dialog.cpp; path = src/job_options_dialog.cpp; sourceTree = "<group>"; };
+		8B29982E0E48C8AA00624A73 /* job_options_dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = job_options_dialog.h; path = src/job_options_dialog.h; sourceTree = "<group>"; };
+		8B29982F0E48C8AA00624A73 /* job_queue_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = job_queue_manager.cpp; path = src/job_queue_manager.cpp; sourceTree = "<group>"; };
+		8B2998300E48C8AA00624A73 /* job_queue_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = job_queue_manager.h; path = src/job_queue_manager.h; sourceTree = "<group>"; };
+		8B2998310E48C8AA00624A73 /* log_viewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = log_viewer.cpp; path = src/log_viewer.cpp; sourceTree = "<group>"; };
+		8B2998320E48C8AA00624A73 /* log_viewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = log_viewer.h; path = src/log_viewer.h; sourceTree = "<group>"; };
+		8B2998330E48C8AA00624A73 /* resources.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = resources.cpp; path = src/resources.cpp; sourceTree = "<group>"; };
+		8B2998340E48C8AA00624A73 /* resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = resources.h; path = src/resources.h; sourceTree = "<group>"; };
+		8B29984A0E48C9E200624A73 /* add-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-16.png"; path = "src/icons/add-16.png"; sourceTree = "<group>"; };
+		8B29984B0E48C9E200624A73 /* add-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add-24.png"; path = "src/icons/add-24.png"; sourceTree = "<group>"; };
+		8B29984C0E48C9E200624A73 /* cancel-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cancel-16.png"; path = "src/icons/cancel-16.png"; sourceTree = "<group>"; };
+		8B29984D0E48C9E200624A73 /* cancel-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cancel-24.png"; path = "src/icons/cancel-24.png"; sourceTree = "<group>"; };
+		8B29984E0E48C9E200624A73 /* clear-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clear-16.png"; path = "src/icons/clear-16.png"; sourceTree = "<group>"; };
+		8B29984F0E48C9E200624A73 /* clear-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clear-24.png"; path = "src/icons/clear-24.png"; sourceTree = "<group>"; };
+		8B2998500E48C9E200624A73 /* gamessq-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gamessq-16.png"; path = "src/icons/gamessq-16.png"; sourceTree = "<group>"; };
+		8B2998510E48C9E200624A73 /* pause-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-16.png"; path = "src/icons/pause-16.png"; sourceTree = "<group>"; };
+		8B2998520E48C9E200624A73 /* pause-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-24.png"; path = "src/icons/pause-24.png"; sourceTree = "<group>"; };
+		8B2998530E48C9E200624A73 /* refresh-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "refresh-16.png"; path = "src/icons/refresh-16.png"; sourceTree = "<group>"; };
+		8B2998540E48C9E200624A73 /* refresh-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "refresh-24.png"; path = "src/icons/refresh-24.png"; sourceTree = "<group>"; };
+		8B2998550E48C9E200624A73 /* remove-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "remove-16.png"; path = "src/icons/remove-16.png"; sourceTree = "<group>"; };
+		8B2998560E48C9E200624A73 /* remove-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "remove-24.png"; path = "src/icons/remove-24.png"; sourceTree = "<group>"; };
+		8B2998570E48C9E200624A73 /* resume-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "resume-16.png"; path = "src/icons/resume-16.png"; sourceTree = "<group>"; };
+		8B2998580E48C9E200624A73 /* resume-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "resume-24.png"; path = "src/icons/resume-24.png"; sourceTree = "<group>"; };
+		8B2998780E48CA8E00624A73 /* GamessQ.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = GamessQ.icns; path = src/icons/GamessQ.icns; sourceTree = "<group>"; };
+		8B3B8B210A770A280041EA88 /* GamessQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamessQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8B2998010E489B6D00624A73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B3B8B1D0A770A280041EA88 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1652D9FD09D0AE7200B7783F = {
+			isa = PBXGroup;
+			children = (
+				1652DA2609D0B0E700B7783F /* source */,
+				1652DAC709D0B41400B7783F /* Resources */,
+				1652DA0C09D0AE8F00B7783F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1652DA0C09D0AE8F00B7783F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B3B8B210A770A280041EA88 /* GamessQ.app */,
+				8B2998030E489B6D00624A73 /* gamessqd */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1652DA2609D0B0E700B7783F /* source */ = {
+			isa = PBXGroup;
+			children = (
+				8B29981F0E48C8AA00624A73 /* about_gamessq.cpp */,
+				8B2998200E48C8AA00624A73 /* about_gamessq.h */,
+				8B2998210E48C8AA00624A73 /* configuration_dialog.cpp */,
+				8B2998220E48C8AA00624A73 /* configuration_dialog.h */,
+				8B2998230E48C8AA00624A73 /* confirm_overwrite.cpp */,
+				8B2998240E48C8AA00624A73 /* confirm_overwrite.h */,
+				8B2998250E48C8AA00624A73 /* gamessq.cpp */,
+				8B2998260E48C8AA00624A73 /* gamessq.h */,
+				8B2998270E48C8AA00624A73 /* gamessq_client.h */,
+				8B2998280E48C8AA00624A73 /* gamessq_common.h */,
+				8B2998290E48C8AA00624A73 /* gamessq_frame.cpp */,
+				8B29982A0E48C8AA00624A73 /* gamessq_frame.h */,
+				8B29982B0E48C8AA00624A73 /* gamessq_posix_client.cpp */,
+				8B29982C0E48C8AA00624A73 /* gamessq_posix_client.h */,
+				8B29982D0E48C8AA00624A73 /* job_options_dialog.cpp */,
+				8B29982E0E48C8AA00624A73 /* job_options_dialog.h */,
+				8B29982F0E48C8AA00624A73 /* job_queue_manager.cpp */,
+				8B2998300E48C8AA00624A73 /* job_queue_manager.h */,
+				8B2998310E48C8AA00624A73 /* log_viewer.cpp */,
+				8B2998320E48C8AA00624A73 /* log_viewer.h */,
+				8B2998330E48C8AA00624A73 /* resources.cpp */,
+				8B2998340E48C8AA00624A73 /* resources.h */,
+				8B2998080E489D9800624A73 /* gamessqd.cpp */,
+				8B2998090E489D9800624A73 /* gamessqd.h */,
+				8B29980A0E489D9800624A73 /* gamessqd_posix.cpp */,
+				8B29980B0E489D9800624A73 /* gamessqd_posix.h */,
+				8B29980C0E489D9800624A73 /* job.cpp */,
+				8B29980D0E489D9800624A73 /* job.h */,
+				8B29980E0E489D9800624A73 /* posix_job.cpp */,
+				8B29980F0E489D9800624A73 /* posix_job.h */,
+			);
+			name = source;
+			sourceTree = "<group>";
+		};
+		1652DAC709D0B41400B7783F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8B2998780E48CA8E00624A73 /* GamessQ.icns */,
+				8B29984A0E48C9E200624A73 /* add-16.png */,
+				8B29984B0E48C9E200624A73 /* add-24.png */,
+				8B29984C0E48C9E200624A73 /* cancel-16.png */,
+				8B29984D0E48C9E200624A73 /* cancel-24.png */,
+				8B29984E0E48C9E200624A73 /* clear-16.png */,
+				8B29984F0E48C9E200624A73 /* clear-24.png */,
+				8B2998500E48C9E200624A73 /* gamessq-16.png */,
+				8B2998510E48C9E200624A73 /* pause-16.png */,
+				8B2998520E48C9E200624A73 /* pause-24.png */,
+				8B2998530E48C9E200624A73 /* refresh-16.png */,
+				8B2998540E48C9E200624A73 /* refresh-24.png */,
+				8B2998550E48C9E200624A73 /* remove-16.png */,
+				8B2998560E48C9E200624A73 /* remove-24.png */,
+				8B2998570E48C9E200624A73 /* resume-16.png */,
+				8B2998580E48C9E200624A73 /* resume-24.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8B2998020E489B6D00624A73 /* gamessqd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B2998070E489B8C00624A73 /* Build configuration list for PBXNativeTarget "gamessqd" */;
+			buildPhases = (
+				8B2998000E489B6D00624A73 /* Sources */,
+				8B2998010E489B6D00624A73 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gamessqd;
+			productName = gamessQd;
+			productReference = 8B2998030E489B6D00624A73 /* gamessqd */;
+			productType = "com.apple.product-type.tool";
+		};
+		8B3B8ADF0A770A280041EA88 /* gamessQ Universal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B3B8B1E0A770A280041EA88 /* Build configuration list for PBXNativeTarget "gamessQ Universal" */;
+			buildPhases = (
+				8B3B8AE00A770A280041EA88 /* Resources */,
+				8B2998860E48CC7C00624A73 /* CopyFiles */,
+				8B3B8AE80A770A280041EA88 /* Sources */,
+				8B3B8B1D0A770A280041EA88 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B2998950E48D7DD00624A73 /* PBXTargetDependency */,
+			);
+			name = "gamessQ Universal";
+			productName = wxMacMolPlt;
+			productReference = 8B3B8B210A770A280041EA88 /* GamessQ.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1652D9FF09D0AE7200B7783F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = 1652DA0009D0AE7200B7783F /* Build configuration list for PBXProject "gamessQ" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 1652D9FD09D0AE7200B7783F;
+			productRefGroup = 1652DA0C09D0AE8F00B7783F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8B3B8ADF0A770A280041EA88 /* gamessQ Universal */,
+				8B2998020E489B6D00624A73 /* gamessqd */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8B3B8AE00A770A280041EA88 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B2998590E48C9E200624A73 /* add-16.png in Resources */,
+				8B29985A0E48C9E200624A73 /* add-24.png in Resources */,
+				8B29985B0E48C9E200624A73 /* cancel-16.png in Resources */,
+				8B29985C0E48C9E200624A73 /* cancel-24.png in Resources */,
+				8B29985D0E48C9E200624A73 /* clear-16.png in Resources */,
+				8B29985E0E48C9E200624A73 /* clear-24.png in Resources */,
+				8B29985F0E48C9E200624A73 /* gamessq-16.png in Resources */,
+				8B2998600E48C9E200624A73 /* pause-16.png in Resources */,
+				8B2998610E48C9E200624A73 /* pause-24.png in Resources */,
+				8B2998620E48C9E200624A73 /* refresh-16.png in Resources */,
+				8B2998630E48C9E200624A73 /* refresh-24.png in Resources */,
+				8B2998640E48C9E200624A73 /* remove-16.png in Resources */,
+				8B2998650E48C9E200624A73 /* remove-24.png in Resources */,
+				8B2998660E48C9E200624A73 /* resume-16.png in Resources */,
+				8B2998670E48C9E200624A73 /* resume-24.png in Resources */,
+				8B2998790E48CA8E00624A73 /* GamessQ.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B2998000E489B6D00624A73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B2998100E489D9800624A73 /* gamessqd.cpp in Sources */,
+				8B2998110E489D9800624A73 /* gamessqd_posix.cpp in Sources */,
+				8B2998120E489D9800624A73 /* job.cpp in Sources */,
+				8B2998130E489D9800624A73 /* posix_job.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B3B8AE80A770A280041EA88 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B29981D0E48C81C00624A73 /* job.cpp in Sources */,
+				8B2998350E48C8AA00624A73 /* about_gamessq.cpp in Sources */,
+				8B2998360E48C8AA00624A73 /* configuration_dialog.cpp in Sources */,
+				8B2998370E48C8AA00624A73 /* confirm_overwrite.cpp in Sources */,
+				8B2998380E48C8AA00624A73 /* gamessq.cpp in Sources */,
+				8B2998390E48C8AA00624A73 /* gamessq_frame.cpp in Sources */,
+				8B29983A0E48C8AA00624A73 /* gamessq_posix_client.cpp in Sources */,
+				8B29983B0E48C8AA00624A73 /* job_options_dialog.cpp in Sources */,
+				8B29983C0E48C8AA00624A73 /* job_queue_manager.cpp in Sources */,
+				8B29983D0E48C8AA00624A73 /* log_viewer.cpp in Sources */,
+				8B29983E0E48C8AA00624A73 /* resources.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8B2998950E48D7DD00624A73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B2998020E489B6D00624A73 /* gamessqd */;
+			targetProxy = 8B2998940E48D7DD00624A73 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1652DA0109D0AE7200B7783F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Debug;
+		};
+		1652DA0209D0AE7200B7783F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+			};
+			name = Release;
+		};
+		8B2998050E489B6E00624A73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_VERSION = "";
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-I$(HOME)/software/wx/wx-debug/lib/wx/include/mac-unicode-debug-static-2.8",
+					"-I$(HOME)/software/wx/wx-debug/include/wx-2.8",
+					"-D__WXDEBUG__",
+					"-D__WXMAC__",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D_LARGE_FILES",
+					"-DNO_GCC_PRAGMA",
+				);
+				OTHER_LDFLAGS = (
+					"-L$(HOME)/software/wx/wx-3.0-cocoa-debug/lib/",
+					"-framework",
+					QuickTime,
+					"-framework",
+					IOKit,
+					"-framework",
+					Carbon,
+					"-framework",
+					Cocoa,
+					"-framework",
+					System,
+					"-lwx_baseu-3.0",
+					"-lwx_osx_cocoau_core-3.0",
+					"-lwx_osx_cocoau_adv-3.0",
+					"-lwx_osx_cocoau_gl-3.0",
+					"-lexpat",
+					"-lwx_osx_cocoau_html-3.0",
+					"-lwxtiff-3.0",
+					"-lwxjpeg-3.0",
+					"-lwxpng-3.0",
+					"-lz",
+					"-lpthread",
+					"-liconv",
+					"-framework",
+					WebKit,
+					"-framework",
+					OpenGL,
+					"-framework",
+					AGL,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = gamessqd;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		8B2998060E489B6E00624A73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION_i386 = 4.0;
+				GCC_VERSION_ppc = 3.3;
+				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-I$(HOME)/software/wx/wx-universal/lib/",
+					"-I$(HOME)/software/wx/wx-universal/include",
+					"-D__WXMAC__",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D_LARGE_FILES",
+					"-DNO_GCC_PRAGMA",
+				);
+				OTHER_LDFLAGS = (
+					"-L$(HOME)/software/wx/wx-3.0-cocoa-release/lib",
+					"-framework",
+					QuickTime,
+					"-framework",
+					IOKit,
+					"-framework",
+					Carbon,
+					"-framework",
+					Cocoa,
+					"-framework",
+					System,
+					"-lwx_baseu-3.0",
+					"-lwx_osx_cocoau_core-3.0",
+					"-lwx_osx_cocoau_gl-3.0",
+					"-lexpat",
+					"-lwx_osx_cocoau_html-3.0",
+					"-lz",
+					"-lpthread",
+					"-liconv",
+					"-framework",
+					WebKit,
+					"-framework",
+					OpenGL,
+					"-framework",
+					AGL,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = gamessqd;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		8B3B8B1F0A770A280041EA88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_MODEL_TUNING = "";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = 4.0;
+				GCC_VERSION_i386 = 4.0;
+				GCC_VERSION_ppc = 3.3;
+				HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon;
+				INFOPLIST_FILE = src/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				OBJROOT = "$(SYMROOT)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-I$(HOME)/software/wx/wx-debug/lib/wx/include/mac-unicode-debug-static-2.8",
+					"-I$(HOME)/software/wx/wx-debug/include/wx-2.8",
+					"-D__WXMAC__",
+					"-D__WXDEBUG__",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D_LARGE_FILES",
+					"-DNO_GCC_PRAGMA",
+					"-D__MAC_USE_QUICKTIME__",
+					"-DHAVE_LIBMING",
+				);
+				OTHER_LDFLAGS = (
+					"-L$(HOME)/software/wx/wx-debug/lib",
+					"-framework",
+					QuickTime,
+					"-framework",
+					IOKit,
+					"-framework",
+					Carbon,
+					"-framework",
+					Cocoa,
+					"-framework",
+					System,
+					"-lwx_base_carbonud-2.8",
+					"-lwx_macud_core-2.8",
+					"-lwx_macud_gl-2.8",
+					"-lwx_macud_adv-2.8",
+					"-lwxexpatd-2.8",
+					"-lwxtiffd-2.8",
+					"-lwxjpegd-2.8",
+					"-lwxpngd-2.8",
+					"-lz",
+					"-lpthread",
+					"-framework",
+					OpenGL,
+					"-liconv",
+					"-framework",
+					WebKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = GamessQ;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8B3B8B200A770A280041EA88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					ppc,
+				);
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION_i386 = 4.0;
+				GCC_VERSION_ppc = 3.3;
+				HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon;
+				INFOPLIST_FILE = src/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
+				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
+				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				OBJROOT = "$(SYMROOT)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-I$(HOME)/software/wx/wx-universal/lib",
+					"-I$(HOME)/software/wx/wx-universal/include",
+					"-D__WXMAC__",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D_LARGE_FILES",
+					"-DNO_GCC_PRAGMA",
+					"-D__MAC_USE_QUICKTIME__",
+					"-DHAVE_LIBMING",
+				);
+				OTHER_LDFLAGS = (
+					"-L$(HOME)/software/wx/wx-universal/lib",
+					"-framework",
+					QuickTime,
+					"-framework",
+					IOKit,
+					"-framework",
+					Carbon,
+					"-framework",
+					Cocoa,
+					"-framework",
+					System,
+					"-lwx_mac_static",
+					"-lz",
+					"-lpthread",
+					"-liconv",
+					"-framework",
+					WebKit,
+					"-framework",
+					OpenGL,
+					"-framework",
+					AGL,
+				);
+				PREBINDING = NO;
+				PRIVATE_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/PrivateHeaders";
+				PRODUCT_NAME = GamessQ;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1652DA0009D0AE7200B7783F /* Build configuration list for PBXProject "gamessQ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1652DA0109D0AE7200B7783F /* Debug */,
+				1652DA0209D0AE7200B7783F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B2998070E489B8C00624A73 /* Build configuration list for PBXNativeTarget "gamessqd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B2998050E489B6E00624A73 /* Debug */,
+				8B2998060E489B6E00624A73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B3B8B1E0A770A280041EA88 /* Build configuration list for PBXNativeTarget "gamessQ Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B3B8B1F0A770A280041EA88 /* Debug */,
+				8B3B8B200A770A280041EA88 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1652D9FF09D0AE7200B7783F /* Project object */;
+}

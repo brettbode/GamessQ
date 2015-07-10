@@ -1,0 +1,15 @@
+GamessQ is a queue manager GAMESS jobs. It allows the user to enqueue several
+jobs which will be run automatically without any further user interaction.
+GamessQ runs with a backend daemon so that even when the user closes the
+program or logs out (under Linux and Mac OS X) the queue will remain active and
+keep running the jobs.
+
+GamessQ has a GUI interface which can be launched by either running games with
+no arguments or with the -g option. It also has a command line driven interface
+that allows the user to manage the queue without having an available graphical
+interface.
+
+For build instructions refer to the INSTALL file in this directory.
+
+For further instructions on using GamessQ refer to either man page or the html
+howto provided with GamessQ.

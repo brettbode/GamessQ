@@ -1,0 +1,36 @@
+Currently GamessQ works and has been tested on Mac OS X, Windows and Linux. The
+standard configure scripts given will work for building it on any of those
+three operating systems.
+
+Prerequisites:
+
+In order to build GamessQ you must have wxWidgets and any related dev packages
+installed. wxWidgets can be acquired from <http://www.wxwidgets.org>. If
+building for windows, wxWidgets must be compiled with support for Unicode.
+
+Configuring GamessQ:
+
+To configure GamessQ simply run:
+./configure
+
+If you have the wxWidgets libraries installed in a non-standard location run:
+./configure --with-wx-config=/path/to/wx-config
+
+Building GamessQ:
+
+To build GamessQ, simply run:
+make
+
+Installing GamessQ:
+
+To install GamessQ on Linux, run:
+make install
+
+To install GamessQ on Mac OS X, run:
+./bundle.sh
+This will make a GamessQ.app bundle that you can then drop into your
+applications folder.
+
+To install GamessQ on Windows, you can simply run it from the source folder, or
+copy the executables and the icons directory to somewhere in your program
+files.

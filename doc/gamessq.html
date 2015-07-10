@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/xhtml+xml; charset=UTF-8" http-equiv="content-type" />
+<title>GamessQ</title>
+</head>
+<body>
+<h1>GamessQ Manual:</h1>
+<h2>Key Features:</h2>
+<ul>
+<li>Runs on Mac OS X, Windows and Linux</li>
+<li>Automatic execution of GAMESS jobs.</li>
+<li>Advanced process management allowing the user to pause and resume jobs
+without loosing data.</li>
+<li>Backend daemon keeps the queue active even when you close the interface or
+log out(Mac OS X and Linux).</li>
+<li>Batch job operations. Every job operation can be done to multiple jobs at a
+time, allowing you to more easily manage a large queue.</li>
+<li>A command line interface allowing you to manage the entire queue without a
+GUI (see the Man page for details)</li>
+</ul>
+<h2>A Quick Walkthrough:</h2>
+<p>The first time you start GamessQ, you should be presented with a
+configuration dialog. The most important things here are the spool directory
+and the GAMESS path.</p>
+<p><b>Spool Directory:</b> This is the location where gamessq will store all
+its temporary data. Every time you add a job to the queue, the input file will
+get copied here, and the output files will be stored here until the job is
+removed from the queue.  Unless you have a good reason to change the location,
+the default should work just fine for most people.</p>
+<p><b>GAMESS Path:</b> This is the directory containing the GAMESS
+executables. On Linux/MacOS X this is specifically the directory containing a
+script called gms (see below for more information).</p>
+<p>Now that you've set up a few things, you're ready to enqueue a few jobs. To
+add jobs to the queue, you have a couple options. You can click the add button
+on the left of the toolbar, or you can simply drag and drop into the window
+(windows and linux) or onto the icon (Mac OS X). You will then be asked how
+many processors you want to use for those jobs.</p>
+<p>You can now close the GamessQ window, and go do something else, and your
+jobs will be run in the background. GamessQ has a part of the program that runs
+in the background (or as a tray icon in windows) that keeps the queue moving
+even when you close the main window. Under Mac OS X and Linux your jobs will
+keep going even when you log out.</p>
+<p>Once a job is completed there are two different ways you can save it back to
+a useful location. You can click Job&gt;Save to File, which will pop up a save
+dialog where you can tell it where and under what name you want the file saved,
+it will then save two (or three for some jobs) files: <i>filename</i>.log,
+<i>filename</i>.dat and possibly <i>filename</i>.irc. You can also click
+Job&gt;Save to Folder, which will save the output files to <i>JobName</i>.log,
+<i>JobName</i>.dat, and <i>JobName</i>.dat, this option allows you to save the
+output from multiple jobs at the same time.</p>
+<h2>Batch Job Management</h2>
+<p>One of the features of GamessQ is its ability to manage jobs in batches. You
+can add multiple input files at a time, and you can also do any operation
+(cancel, pause resume etc.) on multiple jobs at a time. Simply select multiple
+jobs (Hold down the ctrl key) and you can perform an action on all of the
+selected jobs.</p>
+<h2>What to do if something fails</h2>
+<p>If a job finishes with an error, or you don't get valid data the first thing
+you should do is look at the job's log (select the job and click Jobs&gt;View
+Logs). If the log is empty or won't come up, you probably have the GAMESS path
+wrong, in which case you need to set it again. It is also possible that you are
+having problems with GAMESS in which case, you need to look into what's wrong
+with your GAMESS installation.</p>
+
+<h2>Using GamessQ with your own build of GAMESS</h2>
+<P>GamessQ expects to run gamess in the manner of the scripts included with
+the pre-built binaries. In particular it runs the "gms" script at the path 
+given in your GAMESS path preference. It also expects the output files (.dat,
+.trj, etc) to be placed in the current working directory by the rungms script.
+Again that is the default behavior of the rungms script included with the
+pre-built binaries, but not the one in the source distribution. If you place 
+your .dat, etc files somewhere else GamessQ won't be able to find them for the
+copy output command. To use GamessQ with a binary you have built from the 
+source distribution do the following:
+<UL>
+	<LI>Grab a copy of the <a href="http://www.msg.chem.iastate.edu/GAMESS/GamessQ/gms">gms script</a>.
+	<LI>Edit the gms script to set the default GAMESS version to whatever
+		you have chosen.
+	<LI>Setup the <a href="http://www.msg.chem.iastate.edu/GAMESS/GamessQ/rungms">rungms script</a> to store the .dat, .trj, etc files in the
+		current working directory (./) so they will go into GamessQ's spool
+		directory.
+	<LI>Setup the rungms script to generate proper hostlist's for 1-n
+		processors, where n is normally the number of cores in the system you
+		are running on.
+</UL>
+</body>
+</html>

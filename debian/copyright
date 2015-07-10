@@ -1,0 +1,23 @@
+This package was debianized by Jason Ekstrand <ekstrand@iastate.edu> on
+Wed, 02 Jul 2008 14:42:33 -0500.
+
+It was downloaded from <url://example.com>
+
+Upstream Author(s): 
+	Jason Ekstrand <ekstrand@iastate.edu>
+
+This software is copyright (c) 2008 Iowa State University 
+
+You are free to distribute this software under the terms of the GNU General
+Public License as published by the Free Software Foundation, either version 3
+of the License, or (at your option) any later version.
+On Debian systems, the complete text of the GNU General Public License can be
+found in the file `/usr/share/common-licenses/GPL-3'.
+    
+The Debian packaging is (C) 2008, Iowa State University and is licensed under
+the GPL, see `/usr/share/common-licenses/GPL'.
+
+Toolbar icons for this software were taken from the Tango Desktop Project at
+<http://tango.freedesktop.org> and are redistributed in accordance with the
+Creative Commons Attribution Share-Alike License which can be found at
+<http://creativecommons.org/licenses/by-sa/2.5/>

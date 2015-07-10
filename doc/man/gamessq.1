@@ -1,0 +1,87 @@
+.\" Process this file with
+.\" groff -man -Tascii gamessq.1
+.\"
+.TH GAMESSQ 1 "July 1, 2008" "version 1.1" "User Manuals"
+.SH NAME
+gamessq \- Queue manager for GAMESS
+.SH SYNOPSIS
+.B gamessq [-g] [-h] [-p
+.I num
+.B ] [
+.I command
+.B ...]
+.SH DESCRIPTION
+.B gamessq
+is a queue manager GAMESS jobs. It allows the user to enqueue several jobs
+which will be run automatically without any further user interaction. It
+runs with a backend daemon so that even when the user closes the program or
+logs out (under Linux and Mac OS X) the queue will remain active and keep
+running the jobs.
+
+It has a GUI interface which can be launched by either running gamessq with
+no command or with the -g option. It also has a command line driven interface
+that allows the user to manage the queue without having an available graphical
+interface.
+.SH OPTIONS
+.IP -g
+Run in gui mode. GUI mode is enabled by default if no command is given.
+.IP -h
+Print the help and exit.
+.TP
+.BI \-p\  num,\  --procs= num
+Run the newly added jobs on the given number of processors.
+.SH COMMANDS
+The following are the valid commands for managing the queue. If no command is
+given, it will try to add any filenames given as arguments to the queue via the
+gui.
+.TP
+.BI add\  files...
+Adds the given input files to the queue. The files are copied from their
+current locations into a temporary spool directory, and the actual GAMESS
+calculations are made from there. This way changes made to the file does not
+make any difference to gamessq once it has been enqueued. If no commands are
+passed to gamessq, it assumes you want to add the given files.
+.TP
+.BI clear
+Clears all finished jobs from the queue. A job is considered finished if it
+completed normally, was canceled or quit with an error. Once a job is removed
+from the queue all temporary input and output data is removed, and cannot be
+recovered.
+.TP
+.BI list,\ ls
+Lists all the jobs in the queue.
+.TP
+.BI pause\  job\ IDs...
+Pauses the given jobs in the queue. If the job is running, all processes
+associated with the job are suspended.
+.TP
+.BI remove,\ rm\  job\ IDs...
+Removes the given jobs from the queue. Once a job is removed from the queue all
+temporary input and output data is removed, and cannot be recovered.
+.TP
+.BI resume\  job\ IDs...
+Resumes the given jobs in the queue.  If the job was running when it was
+paused, all processes associated with the job are resumed.
+.SH FILES
+.TP
+.IR ~/.gamessq
+Per user configuration file.
+.SH EXAMPLES
+.TP
+.BI gamessq\  file1.inp\ file2.inp
+Adds the given files to the queue via the gui.
+.TP
+.BI gamessq\ add\  file1.inp\ file2.inp
+Adds the given files to the queue.
+.TP
+.BI gamessq\ -g\ add\  file1.inp\ file2.inp
+Adds the given files to the queue and then starts the GUI.
+.TP
+.BI gamessq\ pause\  1\ 5
+Pauses the jobs with ID's 1 and 5.
+.SH BUGS
+None known at this time, but since this project is in somewhat early
+development, there could be several that have yet to be found.
+
+Bug reports should be sent to Brett Bode (brett@scl.ameslab.gov)
+

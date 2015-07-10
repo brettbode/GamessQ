@@ -1,0 +1,4 @@
+?package(gamessq):needs="X11" section="Applications/Science/Chemistry"\
+  title="GamessQ" command="/usr/bin/gamessq" \
+  longtitle="A queue manager for GAMESS jobs" \
+  icon="/usr/share/gamessq/icons/gamessq.svg"
