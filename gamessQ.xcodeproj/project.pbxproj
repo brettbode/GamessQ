@@ -353,7 +353,8 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -363,6 +364,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = YES;
+				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
@@ -492,103 +495,28 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_MODEL_TUNING = "";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = 4.0;
-				GCC_VERSION_i386 = 4.0;
-				GCC_VERSION_ppc = 3.3;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon;
 				INFOPLIST_FILE = src/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
-				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OBJROOT = "$(SYMROOT)";
 				OTHER_CPLUSPLUSFLAGS = (
-					"-I$(HOME)/software/wx/wx-debug/lib/wx/include/mac-unicode-debug-static-2.8",
-					"-I$(HOME)/software/wx/wx-debug/include/wx-2.8",
-					"-D__WXMAC__",
+					"-I/Users/brett/software/wx/wx-3.0-cocoa-debug/lib/wx/include/osx_cocoa-unicode-static-3.0/",
+					"-I$(HOME)/software/wx/wx-3.0-cocoa-debug/include/wx-3.0",
 					"-D__WXDEBUG__",
-					"-D_FILE_OFFSET_BITS=64",
-					"-D_LARGE_FILES",
-					"-DNO_GCC_PRAGMA",
-					"-D__MAC_USE_QUICKTIME__",
-					"-DHAVE_LIBMING",
-				);
-				OTHER_LDFLAGS = (
-					"-L$(HOME)/software/wx/wx-debug/lib",
-					"-framework",
-					QuickTime,
-					"-framework",
-					IOKit,
-					"-framework",
-					Carbon,
-					"-framework",
-					Cocoa,
-					"-framework",
-					System,
-					"-lwx_base_carbonud-2.8",
-					"-lwx_macud_core-2.8",
-					"-lwx_macud_gl-2.8",
-					"-lwx_macud_adv-2.8",
-					"-lwxexpatd-2.8",
-					"-lwxtiffd-2.8",
-					"-lwxjpegd-2.8",
-					"-lwxpngd-2.8",
-					"-lz",
-					"-lpthread",
-					"-framework",
-					OpenGL,
-					"-liconv",
-					"-framework",
-					WebKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = GamessQ;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		8B3B8B200A770A280041EA88 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					i386,
-					ppc,
-				);
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION_i386 = 4.0;
-				GCC_VERSION_ppc = 3.3;
-				HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon;
-				INFOPLIST_FILE = src/Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
-				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
-				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
-				OBJROOT = "$(SYMROOT)";
-				OTHER_CPLUSPLUSFLAGS = (
-					"-I$(HOME)/software/wx/wx-universal/lib",
-					"-I$(HOME)/software/wx/wx-universal/include",
 					"-D__WXMAC__",
 					"-D_FILE_OFFSET_BITS=64",
 					"-D_LARGE_FILES",
 					"-DNO_GCC_PRAGMA",
-					"-D__MAC_USE_QUICKTIME__",
-					"-DHAVE_LIBMING",
+					"-D__WXOSX_COCOA__",
+					"-D__WXOSX__",
 				);
 				OTHER_LDFLAGS = (
-					"-L$(HOME)/software/wx/wx-universal/lib",
+					"-L$(HOME)/software/wx/wx-3.0-cocoa-debug/lib/",
 					"-framework",
 					QuickTime,
 					"-framework",
@@ -599,7 +527,15 @@
 					Cocoa,
 					"-framework",
 					System,
-					"-lwx_mac_static",
+					"-lwx_baseu-3.0",
+					"-lwx_osx_cocoau_core-3.0",
+					"-lwx_osx_cocoau_adv-3.0",
+					"-lwx_osx_cocoau_gl-3.0",
+					"-lexpat",
+					"-lwx_osx_cocoau_html-3.0",
+					"-lwxtiff-3.0",
+					"-lwxjpeg-3.0",
+					"-lwxpng-3.0",
 					"-lz",
 					"-lpthread",
 					"-liconv",
@@ -610,12 +546,70 @@
 					"-framework",
 					AGL,
 				);
-				PREBINDING = NO;
+				PRODUCT_NAME = GamessQ;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8B3B8B200A770A280041EA88 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = /Developer/Headers/FlatCarbon;
+				INFOPLIST_FILE = src/Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LD_MAP_FILE_PATH = "$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OBJROOT = "$(SYMROOT)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"-I$(HOME)/software/wx/wx-3.0-cocoa-release/lib/wx/include/osx_cocoa-unicode-static-3.0",
+					"-I$(HOME)/software/wx/wx-2.0-cocoa-release/include",
+					"-D__WXMAC__",
+					"-D__WXOSX_COCOA__",
+					"-D__WXOSX__",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D_LARGE_FILES",
+					"-DNO_GCC_PRAGMA",
+				);
+				OTHER_LDFLAGS = (
+					"-L$(HOME)/software/wx/wx-3.0-cocoa-release/lib",
+					"-framework",
+					QuickTime,
+					"-framework",
+					IOKit,
+					"-framework",
+					Carbon,
+					"-framework",
+					Cocoa,
+					"-framework",
+					System,
+					"-lwx_baseu-3.0",
+					"-lwx_osx_cocoau_core-3.0",
+					"-lwx_osx_cocoau_gl-3.0",
+					"-lexpat",
+					"-lwx_osx_cocoau_html-3.0",
+					"-lz",
+					"-lpthread",
+					"-liconv",
+					"-framework",
+					WebKit,
+					"-framework",
+					OpenGL,
+					"-framework",
+					AGL,
+				);
 				PRIVATE_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/PrivateHeaders";
 				PRODUCT_NAME = GamessQ;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
