@@ -64,8 +64,9 @@ void PosixJob::Start()
 
 #ifdef DEFAULT_GAMESS_PATH
 	if (gamessname.IsEmpty()) {
+        wxStandardPaths & gStdPaths = wxStandardPaths::Get();
 		gamessname = wxFileName(
-				wxStandardPaths().GetExecutablePath()).GetPath() +
+				gStdPaths.GetExecutablePath()).GetPath() +
 				wxT(DEFAULT_GAMESS_PATH) + wxT("/gms");
 		if (! wxFileExists(gamessname)) {
 			gamessname = wxT("");
