@@ -483,7 +483,7 @@ void GamessQApp::ListJobs()
 		printf("Queue Status: Paused\n");
 	}
 	int width = 20;
-	wxJobListNode *node;
+	JobList::compatibility_iterator node;
 	for (node = list.GetFirst(); node; node = node->GetNext()) {
 		if (node->GetData()->GetName().Len() > width) {
 			width = node->GetData()->GetName().Len();

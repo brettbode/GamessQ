@@ -60,7 +60,7 @@ class GamessQServer
 		void SaveQueue();
 
 		//! Finds the given job in the queue
-		wxJobListNode *getJob(wxString n);
+		JobList::compatibility_iterator getJob(wxString n);
 
 		//! The job queue
 		JobList mJobQueue;

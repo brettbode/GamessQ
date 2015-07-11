@@ -106,8 +106,8 @@ bool GamessQServer::OnExecute(const wxString &data)
 	// most of these items will be useful later
 	wxChar command = *(data.c_str());
 	wxString item = data.Mid(1);
-	wxJobListNode *node = getJob(item);
-	wxJobListNode *node2;
+	JobList::compatibility_iterator node = getJob(item);
+	JobList::compatibility_iterator node2;
 	Job *job;
 	int index;
 
@@ -346,7 +346,7 @@ wxString GamessQServer::OnRequest(const wxString &data)
 	// these will be useful
 	wxChar command = *(data.c_str());
 	wxString item = data.Mid(1);
-	wxJobListNode *node = getJob(item);
+	JobList::compatibility_iterator node = getJob(item);
 	wxString retVal;
 
 	switch (command) {
@@ -419,7 +419,7 @@ bool GamessQServer::CheckQueue()
 	}
 
 	bool retVal = false;
-	wxJobListNode *node = mJobQueue.GetFirst();
+	JobList::compatibility_iterator node = mJobQueue.GetFirst();
 	while (node) {
 		node->GetData()->Refresh();
 		if (node->GetData()->GetStatus() == Job::STATUS_PAUSED) {
@@ -446,17 +446,17 @@ bool GamessQServer::CheckQueue()
 
 /*!
  * Searches through the queue looking for the job with the given unique ID and
- * returns the wxJobListNode object
+ * returns the JobList::compatibility_iterator object
  *
  * \param n the unique ID of the job (as a wxString)
  *
  * \return The wxJobListNode for the given job ID if found, NULL otherwise.
  */
-wxJobListNode *GamessQServer::getJob(wxString n)
+JobList::compatibility_iterator GamessQServer::getJob(wxString n)
 {
 	long index;
 	if (n.ToLong(&index, 10)) {
-		wxJobListNode *node = mJobQueue.GetFirst();
+		JobList::compatibility_iterator node = mJobQueue.GetFirst();
 		while (node) {
 			if (node->GetData()->GetId() == index) {
 				return node;
@@ -670,7 +670,7 @@ void GamessQServer::SaveQueue()
 	file->Write(data);
 
 	// for every job, dump it's info to the file
-	wxJobListNode *node = mJobQueue.GetFirst();
+	JobList::compatibility_iterator node = mJobQueue.GetFirst();
 	for (; node; node = node->GetNext()) {
 		Job *job = node->GetData();
 		data = wxT("\n");

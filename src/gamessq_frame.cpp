@@ -837,7 +837,7 @@ void GamessQFrame::RefreshList()
 
 	// update any jobs that are out of date, and remove any jobs that no longer
 	// exist on the server
-	wxJobListNode *node = mJobList.GetFirst();
+    JobList::compatibility_iterator node = mJobList.GetFirst();
 	int i = 1;
 	while (node) {
 		job = node->GetData();
@@ -851,7 +851,7 @@ void GamessQFrame::RefreshList()
 			node = node->GetNext();
 			i++;
 		} else {
-			wxJobListNode *nextNode = node->GetNext();
+			JobList::compatibility_iterator nextNode = node->GetNext();
 			mJobList.DeleteNode(node);
 			node = nextNode;
 		}
