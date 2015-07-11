@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -255,9 +255,10 @@
 		1652D9FF09D0AE7200B7783F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0640;
 			};
 			buildConfigurationList = 1652DA0009D0AE7200B7783F /* Build configuration list for PBXProject "gamessQ" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -347,15 +348,20 @@
 		1652DA0109D0AE7200B7783F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 			};
 			name = Debug;
 		};
 		1652DA0209D0AE7200B7783F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = YES;
 			};
 			name = Release;
@@ -366,20 +372,23 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
-					"-I$(HOME)/software/wx/wx-debug/lib/wx/include/mac-unicode-debug-static-2.8",
-					"-I$(HOME)/software/wx/wx-debug/include/wx-2.8",
+					"-I/Users/brett/software/wx/wx-3.0-cocoa-debug/lib/wx/include/osx_cocoa-unicode-static-3.0/",
+					"-I$(HOME)/software/wx/wx-3.0-cocoa-debug/include/wx-3.0",
 					"-D__WXDEBUG__",
 					"-D__WXMAC__",
 					"-D_FILE_OFFSET_BITS=64",
 					"-D_LARGE_FILES",
 					"-DNO_GCC_PRAGMA",
+					"-D__WXOSX_COCOA__",
+					"-D__WXOSX__",
 				);
 				OTHER_LDFLAGS = (
 					"-L$(HOME)/software/wx/wx-3.0-cocoa-debug/lib/",
@@ -412,35 +421,32 @@
 					"-framework",
 					AGL,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = gamessqd;
-				ZERO_LINK = YES;
+				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
 		8B2998060E489B6E00624A73 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREFIX_HEADER = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION_i386 = 4.0;
-				GCC_VERSION_ppc = 3.3;
 				INSTALL_PATH = /usr/local/bin;
-				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
-				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
-					"-I$(HOME)/software/wx/wx-universal/lib/",
-					"-I$(HOME)/software/wx/wx-universal/include",
+					"-I$(HOME)/software/wx/wx-3.0-cocoa-release/lib/wx/include/osx_cocoa-unicode-static-3.0",
+					"-I$(HOME)/software/wx/wx-2.0-cocoa-release/include",
 					"-D__WXMAC__",
+					"-D__WXOSX_COCOA__",
+					"-D__WXOSX__",
 					"-D_FILE_OFFSET_BITS=64",
 					"-D_LARGE_FILES",
 					"-DNO_GCC_PRAGMA",
@@ -472,10 +478,9 @@
 					"-framework",
 					AGL,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = gamessqd;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
-				ZERO_LINK = NO;
+				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
@@ -542,7 +547,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = GamessQ;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -608,7 +613,7 @@
 				PREBINDING = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/PrivateHeaders";
 				PRODUCT_NAME = GamessQ;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
