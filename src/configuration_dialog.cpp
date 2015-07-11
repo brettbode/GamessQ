@@ -331,7 +331,8 @@ void ConfigurationDialog::OnOkClick( wxCommandEvent& event )
 {
 	wxCommandEvent okEvent = wxCommandEvent(wxEVT_COMMAND_MENU_SELECTED,
 			ID_SETUP_OK);
-	GetParent()->AddPendingEvent(okEvent);
+//    GetParent()->AddPendingEvent(okEvent);
+    GetParent()->ProcessWindowEvent(okEvent);
 	Show(false);
 }
 

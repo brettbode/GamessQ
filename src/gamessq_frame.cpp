@@ -908,7 +908,12 @@ void GamessQFrame::NewJob()
 {
 	wxFileDialog *fileChooser = new wxFileDialog(this, wxT("Choose a file"),
 			wxT(""), wxT(""), wxT("GAMESS input file (*.inp)|*.inp"),
-			wxOPEN | wxFILE_MUST_EXIST | wxMULTIPLE);
+#if wxCHECK_VERSION(2,9,0)
+            wxFD_OPEN | wxFD_FILE_MUST_EXIST | wxFD_MULTIPLE
+#else
+            wxOPEN | wxFILE_MUST_EXIST | wxMULTIPLE
+#endif
+                                                 );
 	if (fileChooser->ShowModal() == wxID_OK) {
 		if (mJobOptionsDialog->ShowModal() == wxID_OK) {
 			int procs = mJobOptionsDialog->GetNumProcessors();
@@ -1225,7 +1230,13 @@ bool GamessQFrame::OnDropFiles(const wxArrayString& filenames)
 void GamessQFrame::OnSaveasClick( wxCommandEvent& event )
 {
 	wxFileDialog dialog(this, wxT("Select Output Folder"), wxT(""), wxT(""),
-			wxT("GAMESS Output Files (*.dat)|*.dat"), wxSAVE);
+			wxT("GAMESS Output Files (*.dat)|*.dat"),
+#if wxCHECK_VERSION(2,9,0)
+                    wxFD_SAVE
+#else
+                    wxSAVE
+#endif
+                        );
 	if (dialog.ShowModal() == wxID_OK) {
 		// TODO: I should probably check more stuff here.
 		Job *job = mJobList.Item(jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,

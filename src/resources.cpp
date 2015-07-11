@@ -29,12 +29,13 @@ wxBitmap GetGamessQBitmap(wxString name)
 	} else if (name == wxT("message/wxQuestion")) {
 		return wxArtProvider::GetBitmap(wxART_QUESTION, wxART_MESSAGE_BOX);
 	}
+    wxStandardPaths & gStdPaths = wxStandardPaths::Get();
 #if defined __WINDOWS__
-	name = wxStandardPaths().GetDataDir() + wxT("\\") + name;
+	name = gStdPaths.GetDataDir() + wxT("\\") + name;
 	return wxBitmap(name, wxBITMAP_TYPE_PNG);
 #elif defined __WXMAC__
-	wxFileName filename(name);
-	name = wxFileName(wxStandardPaths().GetExecutablePath()).GetPath() +
+    wxFileName filename(name);
+	name = wxFileName(gStdPaths.GetExecutablePath()).GetPath() +
 			wxT("/../Resources/") + filename.GetFullName();
 	return wxBitmap(name, wxBITMAP_TYPE_PNG);
 #else
@@ -79,11 +80,12 @@ wxBitmap GetGamessQBitmap(wxString name)
 
 wxIcon GetGamessQIcon()
 {
+    wxStandardPaths & gStdPaths = wxStandardPaths::Get();
 #if defined __WINDOWS__
-	return wxIcon(wxStandardPaths().GetDataDir() +
+	return wxIcon(gStdPaths.GetDataDir() +
 			wxT("\\gamessq.exe"), wxBITMAP_TYPE_ICO, 16, 16);
 #elif defined __WXMAC__
-	return wxIcon(wxFileName(wxStandardPaths().GetExecutablePath()).GetPath() +
+    return wxIcon(wxFileName(gStdPaths.GetExecutablePath()).GetPath() +
 			wxT("/../Resources/gamessq-16.png"), wxBITMAP_TYPE_PNG);
 #else /* Linux */
 	return wxIcon(wxString(wxT(DATA_DIR)) + wxT("/icons/gamessq-16.png"),
