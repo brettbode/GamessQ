@@ -416,7 +416,8 @@ wxString JobQueueManager::GetSpoolDir()
 	}
 	wxString message;
 	message << (wxChar)REQUEST_SPOOLDIR;
-	return mClient->Request(message);
+    wxString result = mClient->Request(message);
+	return result;
 }
 
 /*! \copydetails Job::GetGamessDir()
@@ -429,7 +430,8 @@ wxString JobQueueManager::GetGamessDir()
 	}
 	wxString message;
 	message << (wxChar)REQUEST_GAMESSDIR;
-	return mClient->Request(message);
+    wxString result = mClient->Request(message);
+    return result;
 }
 
 /*! \copydetails Job::SetSpoolDir()

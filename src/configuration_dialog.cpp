@@ -254,7 +254,7 @@ int ConfigurationDialog::GetRefreshFrequency()
  */
 void ConfigurationDialog::SetSpoolDir(wxString spoolDir)
 {
-	mSpoolDir->SetValue(spoolDir);
+	if (spoolDir.Len()>0) mSpoolDir->SetValue(spoolDir);
 }
 
 /*! \return The value of the "Spool Directory" field.
@@ -270,7 +270,7 @@ wxString ConfigurationDialog::GetSpoolDir()
  */
 void ConfigurationDialog::SetGamessPath(wxString gamessPath)
 {
-	mGamessPath->SetValue(gamessPath);
+	if (gamessPath.Len()>0) mGamessPath->SetValue(gamessPath);
 }
 
 /*! \return The value of the "GAMESS Directory" field.

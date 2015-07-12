@@ -119,14 +119,14 @@ wxString GamessQPosixClient::Request(const wxString &data)
 	write(mFd, &len, sizeof(int));
 
 	// transmit the request
-	write(mFd, data.c_str(), len * sizeof(wxChar));
+    write(mFd, data.c_str(), len * sizeof(char));
 
 	// read the length of the reply
 	read(mFd, &len, sizeof(int));
 
 	// read the reply
-	wxChar *output = new wxChar[len];
-	read(mFd, output, len * sizeof(wxChar));
+    char *output = new char[len];
+    read(mFd, output, len * sizeof(char));
 	wxString retVal(output, len);
 
 	debug << retVal;
@@ -152,7 +152,7 @@ bool GamessQPosixClient::Execute(const wxString &data)
 	write(mFd, &len, sizeof(int));
 
 	// transmit the command
-	write(mFd, data.c_str(), len * sizeof(wxChar));
+	write(mFd, data.c_str(), len * sizeof(char));
 
 	// read the result of the command
 	read(mFd, &c, 1);

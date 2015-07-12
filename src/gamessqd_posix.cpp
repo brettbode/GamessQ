@@ -26,7 +26,6 @@ IMPLEMENT_APP(GamessQdPosixApp)
 
 bool GamessQdPosixApp::OnInit()
 {
-	printf("%d\n", sizeof(wxChar));
 	// attempt to detatch from everything
 	fclose(stdout);
 	fclose(stdin);
@@ -53,7 +52,6 @@ int GamessQdPosixApp::OnRun()
 {
 	mMaxNumFds = 10; // a nice default
 	mFds = new struct pollfd[mMaxNumFds];
-	mNumFds;
 	fd_set fdset;
 
 	// create the socket
@@ -66,7 +64,6 @@ int GamessQdPosixApp::OnRun()
 	mFds[0].fd = mSock;
 	mFds[0].events = POLLIN;
 	mNumFds = 1;
-	mSock;
 
 	// set up the name of the socket
 	struct sockaddr_un name;
@@ -199,8 +196,8 @@ void GamessQdPosixApp::ReadCommands()
 			read(mFds[i].fd, &len, sizeof(len));
 
 			// allocate enough data (plus one for a null)
-			wxChar *data = new wxChar[len + 1];
-			read(mFds[i].fd, data, len * sizeof(wxChar));
+            char *data = new char[len + 1];
+            read(mFds[i].fd, data, len * sizeof(char));
 			data[len] = 0; //add a null
 
 			if (type == (char)SOCK_COMMAND) {
@@ -214,11 +211,12 @@ void GamessQdPosixApp::ReadCommands()
 				write(mFds[i].fd, &retVal, 1);
 			} else if (type == (char)SOCK_REQUEST) {
 				wxString retVal = mServer->OnRequest(data);
+                wxLogMessage(retVal);
 				len = retVal.Len();
 				// send the size of the result
 				write(mFds[i].fd, &len, sizeof(int));
 				// send the result
-				write(mFds[i].fd, retVal.c_str(), len * sizeof(wxChar));
+                write(mFds[i].fd, retVal.c_str(), len * sizeof(char));
 			}
 			delete data;
 		}
