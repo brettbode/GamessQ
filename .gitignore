@@ -19,10 +19,12 @@ Makefile
 autom4te.cache
 config.log
 config.status
+gamessQ.xcodeproj/project.xcworkspace/
+gamessQ.xcodeproj/xcuserdata/
 
 # OS generated files #
 ######################
-.DS_Store?
+.DS_Store
 ehthumbs.db
 Icon?
 Thumbs.db
