@@ -376,7 +376,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/bin;
@@ -395,8 +395,6 @@
 				);
 				OTHER_LDFLAGS = (
 					"-L$(HOME)/software/wx/wx-3.0-cocoa-debug/lib/",
-					"-framework",
-					QuickTime,
 					"-framework",
 					IOKit,
 					"-framework",
@@ -433,12 +431,14 @@
 		8B2998060E489B6E00624A73 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INSTALL_PATH = /usr/local/bin;
@@ -446,7 +446,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-I$(HOME)/software/wx/wx-3.0-cocoa-release/lib/wx/include/osx_cocoa-unicode-static-3.0",
-					"-I$(HOME)/software/wx/wx-2.0-cocoa-release/include",
+					"-I$(HOME)/software/wx/wx-3.0-cocoa-release/include/wx-3.0/",
 					"-D__WXMAC__",
 					"-D__WXOSX_COCOA__",
 					"-D__WXOSX__",
@@ -456,8 +456,6 @@
 				);
 				OTHER_LDFLAGS = (
 					"-L$(HOME)/software/wx/wx-3.0-cocoa-release/lib",
-					"-framework",
-					QuickTime,
 					"-framework",
 					IOKit,
 					"-framework",
@@ -554,6 +552,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -569,7 +569,7 @@
 				OBJROOT = "$(SYMROOT)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-I$(HOME)/software/wx/wx-3.0-cocoa-release/lib/wx/include/osx_cocoa-unicode-static-3.0",
-					"-I$(HOME)/software/wx/wx-2.0-cocoa-release/include",
+					"-I$(HOME)/software/wx/wx-3.0-cocoa-release/include/wx-3.0/",
 					"-D__WXMAC__",
 					"-D__WXOSX_COCOA__",
 					"-D__WXOSX__",
@@ -601,6 +601,10 @@
 					OpenGL,
 					"-framework",
 					AGL,
+					"-lwx_osx_cocoau_adv-3.0",
+					"-lwxtiff-3.0",
+					"-lwxjpeg-3.0",
+					"-lwxpng-3.0",
 				);
 				PRIVATE_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/PrivateHeaders";
 				PRODUCT_NAME = GamessQ;
