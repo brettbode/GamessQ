@@ -1,7 +1,7 @@
 Source: gamessq
 Section: science
 Priority: optional
-Maintainer: Jason Ekstrand <ekstrand@iastate.edu>
+Maintainer: Brett Bode <MMP.Guy@gmail.com>
 Build-Depends: debhelper (>=5), autotools-dev, libwxgtk2.6-dev (>= 2.6.3)
 Standards-Version: 1.0.0
 
