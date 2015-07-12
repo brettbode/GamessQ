@@ -455,8 +455,9 @@ bool GamessQServer::CheckQueue()
 JobList::compatibility_iterator GamessQServer::getJob(wxString n)
 {
 	long index;
+    JobList::compatibility_iterator node;
 	if (n.ToLong(&index, 10)) {
-		JobList::compatibility_iterator node = mJobQueue.GetFirst();
+		node = mJobQueue.GetFirst();
 		while (node) {
 			if (node->GetData()->GetId() == index) {
 				return node;
@@ -464,7 +465,7 @@ JobList::compatibility_iterator GamessQServer::getJob(wxString n)
 			node = node->GetNext();
 		}
 	}
-	return NULL;
+	return node;
 }
 
 /*!
@@ -494,7 +495,7 @@ wxString GamessQServer::ReadLine(wxFFile *file)
 		while (i < num) {
 			file->Read(&c, 1);
 			if (c == '\n' || file->Eof()) {
-				buf[i] = NULL;
+				buf[i] = '\0';
 				wxString data = wxString(buf, wxConvUTF8);
 				delete buf;
 				wxLogDebug(data);
