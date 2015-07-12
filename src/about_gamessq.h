@@ -21,6 +21,7 @@
  */
 
 ////@begin includes
+#include "wx/hyperlink.h"
 ////@end includes
 
 /*!
@@ -36,6 +37,8 @@
 
 ////@begin control identifiers
 #define ID_ABOUTGAMESSQ 10024
+#define ID_HYPERLINKCTRL 10000
+#define ID_HYPERLINKCTRL1 10001
 #define SYMBOL_ABOUTGAMESSQ_STYLE wxCAPTION|wxRESIZE_BORDER|wxSYSTEM_MENU|wxCLOSE_BOX|wxTAB_TRAVERSAL
 #define SYMBOL_ABOUTGAMESSQ_TITLE _("About GamessQ")
 #define SYMBOL_ABOUTGAMESSQ_IDNAME ID_ABOUTGAMESSQ
