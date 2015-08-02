@@ -84,7 +84,7 @@ AM_CONDITIONAL([HAS_WINDRES], [false])
 AC_SUBST([GAMESSQ_OS_FILES], ['$GAMESSQ_POSIX_FILES'])
 WX_CXXFLAGS="`"$WXCONFIG" --cxxflags` -DDATA_DIR='\"${datadir}/$PACKAGE\"'"
 AC_SUBST([WX_CXXFLAGS])
-WX_LIBS="`"$WXCONFIG" --libs base,core`"
+WX_LIBS="`"$WXCONFIG" --libs base,core,adv`"
 AC_SUBST([WX_LIBS])
 
 AC_CHECK_HEADER([signal.h],[],
