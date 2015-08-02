@@ -242,6 +242,74 @@ void GamessQFrame::CreateControls()
         jobsMenu->Append(menuItem);
     }
     menuBar->Append(jobsMenu, _("&Jobs"));
+    
+    //Yes this is a complete copy of the menu that was just added to the Menubar. At least in
+    //wx 3.0 wx throws an assertion saying that a popupmenu is not supposed to be attached to
+    //another menu or menubar. So after attaching the previous copy recreate it. The copy
+    //attached to the menu is now "owned" by the Menu/window.
+    
+    jobsMenu = new wxMenu;
+    {
+        wxMenuItem* menuItem = new wxMenuItem(jobsMenu, wxID_ADD, _("&Add Jobs\tCtrl+A"), _("Add new GAMESS jobs to the end of the queue"), wxITEM_NORMAL);
+        wxBitmap bitmap(itemFrame1->GetBitmapResource(wxT("icons/add-16.png")));
+        menuItem->SetBitmap(bitmap);
+        jobsMenu->Append(menuItem);
+    }
+    {
+        wxMenuItem* menuItem = new wxMenuItem(jobsMenu, wxID_REMOVE, _("Remove Jobs"), _("Remove the selected GAMESS jobs from the queue"), wxITEM_NORMAL);
+        wxBitmap bitmap(itemFrame1->GetBitmapResource(wxT("icons/remove-16.png")));
+        menuItem->SetBitmap(bitmap);
+        jobsMenu->Append(menuItem);
+    }
+    jobsMenu->AppendSeparator();
+    {
+        wxMenuItem* menuItem = new wxMenuItem(jobsMenu, wxID_CANCEL, _("&Cancel Jobs"), _("Cancel the selected GAMESS jobs"), wxITEM_NORMAL);
+        wxBitmap bitmap(itemFrame1->GetBitmapResource(wxT("icons/cancel-16.png")));
+        menuItem->SetBitmap(bitmap);
+        jobsMenu->Append(menuItem);
+    }
+    {
+        wxMenuItem* menuItem = new wxMenuItem(jobsMenu, ID_PAUSE, _("&Pause Jobs\tCtrl+P"), _("Pause the selected GAMESS jobs"), wxITEM_NORMAL);
+        wxBitmap bitmap(itemFrame1->GetBitmapResource(wxT("icons/pause-16.png")));
+        menuItem->SetBitmap(bitmap);
+        jobsMenu->Append(menuItem);
+    }
+    {
+        wxMenuItem* menuItem = new wxMenuItem(jobsMenu, ID_RESUME, _("&Resume Jobs\tCtrl+R"), _("Resume the selected paused GAMESS jobs"), wxITEM_NORMAL);
+        wxBitmap bitmap(itemFrame1->GetBitmapResource(wxT("icons/resume-16.png")));
+        menuItem->SetBitmap(bitmap);
+        jobsMenu->Append(menuItem);
+    }
+    jobsMenu->AppendSeparator();
+    {
+        wxMenuItem* menuItem = new wxMenuItem(jobsMenu, ID_SAVEFOLDER, _("Save Output to Folder\tCtrl+S"), _("Save GAMESS output for selected jobs to a folder"), wxITEM_NORMAL);
+        wxBitmap bitmap(itemFrame1->GetBitmapResource(wxT("menu/wxSave")));
+        menuItem->SetBitmap(bitmap);
+        jobsMenu->Append(menuItem);
+    }
+    {
+        wxMenuItem* menuItem = new wxMenuItem(jobsMenu, ID_SAVEAS, _("Save Output As..."), _("Save GAMESS output for this job"), wxITEM_NORMAL);
+        wxBitmap bitmap(itemFrame1->GetBitmapResource(wxT("menu/wxSaveAs")));
+        menuItem->SetBitmap(bitmap);
+        jobsMenu->Append(menuItem);
+    }
+    jobsMenu->Append(ID_MACMOLPLT, _("Open in wxMacMolPlt\tCtrl+O"), _T(""), wxITEM_NORMAL);
+    jobsMenu->Append(ID_VIEWLOGS, _("View &Logs"), _("View the GAMESS log files for the selected jobs"), wxITEM_NORMAL);
+    jobsMenu->AppendSeparator();
+    {
+        wxMenuItem* menuItem = new wxMenuItem(jobsMenu, ID_REFRESH, _("Refresh\tAlt-R"), _("Refresh the display of the queue status"), wxITEM_NORMAL);
+        wxBitmap bitmap(itemFrame1->GetBitmapResource(wxT("icons/refresh-16.png")));
+        menuItem->SetBitmap(bitmap);
+        jobsMenu->Append(menuItem);
+    }
+    jobsMenu->AppendSeparator();
+    {
+        wxMenuItem* menuItem = new wxMenuItem(jobsMenu, wxID_CLEAR, _("Clean Up"), _("Clear all finished GAMESS jobs from the queue"), wxITEM_NORMAL);
+        wxBitmap bitmap(itemFrame1->GetBitmapResource(wxT("icons/clear-16.png")));
+        menuItem->SetBitmap(bitmap);
+        jobsMenu->Append(menuItem);
+    }
+
     wxMenu* itemMenu24 = new wxMenu;
     itemMenu24->Append(wxID_ABOUT, _("&About"), _T(""), wxITEM_NORMAL);
     menuBar->Append(itemMenu24, _("&Help"));
