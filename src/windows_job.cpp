@@ -77,9 +77,9 @@ void WindowsJob::Start()
 	if (gamessDir.IsEmpty()) {
 		wxPathList SystemPath;
 		SystemPath.AddEnvList(wxT("PATH"));
-		gamessname = SystemPath.FindAbsoluteValidPath(wxT("runscript.csh"));
+		gamessname = SystemPath.FindAbsoluteValidPath(wxT("rungms.bat"));
 	} else {
-		wxFileName name(gamessDir, wxT("runscript.csh"));
+		wxFileName name(gamessDir, wxT("rungms.bat"));
 		name.MakeAbsolute();
 		gamessname = name.GetFullPath();
 		if (! wxFileExists(gamessname)) {
@@ -89,8 +89,9 @@ void WindowsJob::Start()
 
 #ifdef DEFAULT_GAMESS_PATH
 	if (gamessname.IsEmpty()) {
-		gamessname = wxStandardPaths().GetDataDir() + wxT(DEFAULT_GAMESS_PATH) +
-				wxT("/runscript.csh");
+		wxStandardPathsBase& gStdPaths = wxStandardPaths::Get();
+		gamessname = gStdPaths.GetResourcesDir() + wxT(DEFAULT_GAMESS_PATH) +
+				wxT("/rungms.bat");
 		if (! wxFileExists(gamessname)) {
 			gamessname = wxT("");
 		}
@@ -175,7 +176,7 @@ void WindowsJob::Start()
 	// now we create the actual process, it needs to be created in a suspended
 	// state so that we can assign it to the job object before it gets a chance
 	// to spawn any more processes.
-	if (CreateProcess(NULL, (wxChar *)command.c_str(), NULL, NULL, true,
+	if (CreateProcess(NULL, (wxChar *)command.wc_str(), NULL, NULL, true,
 			CREATE_SUSPENDED, NULL, NULL, &si, &pi)) {
 		if (! AssignProcessToJobObject(mJobHandle, pi.hProcess)) {
 			LOG_ERROR("AssignProcessToJobObject");

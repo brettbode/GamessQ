@@ -235,7 +235,7 @@ wxChar *GamessQdWindowsApp::ServerConn::OnRequest(const wxString& topic,
 		*size = (retString.Len() + 1) * sizeof(wxChar);
 	}
 
-	return (wxChar *)retString.c_str();
+	return (wxChar *)retString.wc_str();
 }
 
 /*!
