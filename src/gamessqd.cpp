@@ -249,6 +249,9 @@ bool GamessQServer::OnExecute(const wxString &data)
 			}
 			break;
 		case COMMAND_SPOOLDIR:
+        {
+            wxConfig config(WX_CONFIG_APPNAME);
+            config.Write(wxT("Spool Directory"), item);
 			Job::SetSpoolDir(item);
 			mLogFile->Close();
 			delete mLogFile;
@@ -263,10 +266,15 @@ bool GamessQServer::OnExecute(const wxString &data)
 				mLogger = logtmp;
 			}
 			retVal = true;
+        }
 			break;
 		case COMMAND_GAMESSDIR:
+        {
+            wxConfig config(WX_CONFIG_APPNAME);
+            config.Write(wxT("GAMESS path"), item);
 			Job::SetGamessDir(item);
 			retVal = true;
+        }
 			break;
 		case COMMAND_PAUSE_ALL:
 			retVal = true;
