@@ -102,12 +102,11 @@ class GamessQdWindowsApp: public wxApp, public wxServer
 				~ServerConn();
 		
 				//! Execute Command
-				virtual bool OnExecute(const wxString& topic, wxChar *data,
-						int size, wxIPCFormat format);
+				virtual bool OnExec(const wxString& topic, const wxString & data);
 		
 				//! Query for information
-				virtual wxChar *OnRequest(const wxString& topic,
-						const wxString& data, int *size, wxIPCFormat format);
+				virtual const void *OnRequest(const wxString& topic,
+						const wxString& data, size_t *size, wxIPCFormat format);
 		
 				//! Client disconnect
 				virtual bool OnDisconnect();

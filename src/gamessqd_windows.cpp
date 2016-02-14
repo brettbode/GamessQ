@@ -194,20 +194,19 @@ GamessQdWindowsApp::ServerConn::~ServerConn()
 
 /*!
  * This function is called upon receiving a command from the client and relays
- * this command to GamessQServer::OnExecute()
+ * this command to GamessQServer::OnExec()
  *
  * \param topic The DDE topic for this command (unused)
  * \param data The command data
- * \param size The size of the command (unused)
- * \param format The format of the command (unused)
  *
  * \return True if the command succeeded, false otherwise
  */
-bool GamessQdWindowsApp::ServerConn::OnExecute(const wxString& topic,
-		wxChar *data, int size, wxIPCFormat format)
+bool GamessQdWindowsApp::ServerConn::OnExec(const wxString& topic,
+	const wxString & data)
 {
+	wxLogMessage(data);
 	if (mApp->mServer) {
-		return mApp->mServer->OnExecute(wxString(data));
+		return mApp->mServer->OnExecute(data);
 	}
 	return false;
 }
@@ -222,8 +221,8 @@ bool GamessQdWindowsApp::ServerConn::OnExecute(const wxString& topic,
  *
  * \return The result of the query
  */
-wxChar *GamessQdWindowsApp::ServerConn::OnRequest(const wxString& topic,
-		const wxString& data, int *size, wxIPCFormat format)
+const void *GamessQdWindowsApp::ServerConn::OnRequest(const wxString& topic,
+		const wxString& data, size_t *size, wxIPCFormat format)
 {
 	if (! mApp->mServer) {
 		return NULL;
@@ -234,8 +233,9 @@ wxChar *GamessQdWindowsApp::ServerConn::OnRequest(const wxString& topic,
 	if (size) {
 		*size = (retString.Len() + 1) * sizeof(wxChar);
 	}
+	wxLogDebug(retString);
 
-	return (wxChar *)retString.wc_str();
+	return (void *)retString.wc_str();
 }
 
 /*!
