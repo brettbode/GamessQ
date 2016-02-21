@@ -118,17 +118,18 @@ void WindowsJob::Start()
 
 	// generate the command
 	wxFileName name(gamessname);
-	name.SetFullName(wxT("csh.exe"));
-	name.MakeAbsolute();
+	name.SetFullName(wxT("rungms.bat"));
+//	name.SetFullName(wxT("csh.exe"));
+//	name.MakeAbsolute();
 	wxString command = name.GetFullPath();
-	name.SetFullName(wxT("runscript.csh"));
-	command << wxT(" -e -f ") << name.GetFullPath();
+//	name.SetFullName(wxT("runscript.csh"));
+//	command << wxT(" -e -f ") << name.GetFullPath();
 	name = wxFileName(GetSpoolFileName());
 	command << wxT(" ") << name.GetName();
-	command << wxT(" '' ");
+	command << wxT(" 13-64.pgi.linux.blas ");
 	command << mNumProcessors;
-	command << wxT(" ") << gamessDir;
-	command << wxT(" ") << wxGetHostName();
+//	command << wxT(" ") << gamessDir;
+//	command << wxT(" ") << wxGetHostName();
 	wxLogMessage(wxT("Exec: ") + command);
 
 	// set up the security attributes for the input and output handles
@@ -177,7 +178,7 @@ void WindowsJob::Start()
 	// state so that we can assign it to the job object before it gets a chance
 	// to spawn any more processes.
 	if (CreateProcess(NULL, (wxChar *)command.wc_str(), NULL, NULL, true,
-			CREATE_SUSPENDED, NULL, NULL, &si, &pi)) {
+		CREATE_SUSPENDED, NULL, spoolDir, &si, &pi)) {
 		if (! AssignProcessToJobObject(mJobHandle, pi.hProcess)) {
 			LOG_ERROR("AssignProcessToJobObject");
 		}
