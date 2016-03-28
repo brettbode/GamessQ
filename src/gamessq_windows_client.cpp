@@ -67,8 +67,9 @@ wxString GamessQWindowsClient::Request(const wxString &data)
 	wxString debug;
 	debug << wxT("Request: ") << data << wxT(" : ");
 	if (mConnection) {
-		output = wxString((const char *)mConnection->Request(data));
-		debug << output;
+		size_t len = 0;
+		output = wxString((wchar_t *)mConnection->Request(data, &len));
+		debug << output << " length " << len;
 	} else {
 		wxLogError(wxT("No Connection"));
 		return wxT("");
