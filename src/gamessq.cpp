@@ -323,6 +323,7 @@ int GamessQApp::OnRun() {
 }
 
 //! Command line description
+#if wxCHECK_VERSION(2, 9, 0)
 static const wxCmdLineEntryDesc cmdLineDesc[] =
 {
 	{ wxCMD_LINE_SWITCH, "g", "gui", "enable the gui" },
@@ -338,6 +339,23 @@ static const wxCmdLineEntryDesc cmdLineDesc[] =
 
 	{ wxCMD_LINE_NONE }
 };
+#else
+static const wxCmdLineEntryDesc cmdLineDesc[] =
+{
+    { wxCMD_LINE_SWITCH, wxT("g"), wxT("gui"), wxT("enable the gui") },
+    
+    { wxCMD_LINE_SWITCH, wxT("h"), wxT("help"),
+        wxT("print this help and exit") },
+    
+    { wxCMD_LINE_OPTION, wxT("p"), wxT("procs"),
+        wxT("number of processors for added jobs"), wxCMD_LINE_VAL_NUMBER },
+    
+    { wxCMD_LINE_PARAM, NULL, NULL, wxT("command"), wxCMD_LINE_VAL_STRING,
+        wxCMD_LINE_PARAM_OPTIONAL | wxCMD_LINE_PARAM_MULTIPLE },
+    
+    { wxCMD_LINE_NONE }
+};
+#endif
 
 /*! Parses the command line arguments, and stores the results in member
  * variables

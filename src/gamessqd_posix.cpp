@@ -196,8 +196,13 @@ void GamessQdPosixApp::ReadCommands()
 			read(mFds[i].fd, &len, sizeof(len));
 
 			// allocate enough data (plus one for a null)
+#if wxCHECK_VERSION(2, 9, 0)
             char *data = new char[len + 1];
             read(mFds[i].fd, data, len * sizeof(char));
+#else
+            wxChar *data = new wxChar[len + 1];
+            read(mFds[i].fd, data, len * sizeof(wxChar));
+#endif
 			data[len] = 0; //add a null
 
 			if (type == (char)SOCK_COMMAND) {
@@ -218,7 +223,7 @@ void GamessQdPosixApp::ReadCommands()
 				// send the result
                 write(mFds[i].fd, retVal.c_str(), len * sizeof(char));
 			}
-			delete data;
+            delete[] data;
 		}
 	}
 }

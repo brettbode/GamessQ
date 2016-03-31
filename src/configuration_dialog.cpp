@@ -331,8 +331,11 @@ void ConfigurationDialog::OnOkClick( wxCommandEvent& event )
 {
 	wxCommandEvent okEvent = wxCommandEvent(wxEVT_COMMAND_MENU_SELECTED,
 			ID_SETUP_OK);
-//    GetParent()->AddPendingEvent(okEvent);
+#if wxCHECK_VERSION(3, 0, 0)
     GetParent()->ProcessWindowEvent(okEvent);
+#else
+    GetParent()->AddPendingEvent(okEvent);
+#endif
 	Show(false);
 }
 

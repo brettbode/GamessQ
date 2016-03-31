@@ -127,7 +127,11 @@ wxString GamessQPosixClient::Request(const wxString &data)
 	// read the reply
     char *output = new char[len];
     read(mFd, output, len * sizeof(char));
-	wxString retVal(output, len);
+#if wxCHECK_VERSION(2, 9, 0)
+    wxString retVal(output, len);
+#else
+    wxString retVal((wxChar *) output, len);
+#endif
 
 	debug << retVal;
 	wxLogDebug(debug);

@@ -29,7 +29,7 @@ wxBitmap GetGamessQBitmap(wxString name)
 	} else if (name == wxT("message/wxQuestion")) {
 		return wxArtProvider::GetBitmap(wxART_QUESTION, wxART_MESSAGE_BOX);
 	}
-    wxStandardPaths & gStdPaths = wxStandardPaths::Get();
+    wxStandardPathsBase & gStdPaths = wxStandardPaths::Get();
 #if defined __WINDOWS__
 	name = gStdPaths.GetDataDir() + wxT("\\") + name;
 	return wxBitmap(name, wxBITMAP_TYPE_PNG);
@@ -80,7 +80,7 @@ wxBitmap GetGamessQBitmap(wxString name)
 
 wxIcon GetGamessQIcon()
 {
-    wxStandardPaths & gStdPaths = wxStandardPaths::Get();
+    wxStandardPathsBase & gStdPaths = wxStandardPaths::Get();
 #if defined __WINDOWS__
 	return wxIcon(gStdPaths.GetDataDir() +
 			wxT("\\gamessq.exe"), wxBITMAP_TYPE_ICO, 16, 16);
