@@ -119,17 +119,23 @@ wxString GamessQPosixClient::Request(const wxString &data)
 	write(mFd, &len, sizeof(int));
 
 	// transmit the request
+#if wxCHECK_VERSION(2, 9, 0)
     write(mFd, data.c_str(), len * sizeof(char));
+#else
+    write(mFd, data.c_str(), len * sizeof(wxChar));
+#endif
 
 	// read the length of the reply
 	read(mFd, &len, sizeof(int));
 
 	// read the reply
+#if wxCHECK_VERSION(2, 9, 0)
     char *output = new char[len];
     read(mFd, output, len * sizeof(char));
-#if wxCHECK_VERSION(2, 9, 0)
     wxString retVal(output, len);
 #else
+    wxChar *output = new char[len];
+    read(mFd, output, len * sizeof(wxChar));
     wxString retVal((wxChar *) output, len);
 #endif
 
@@ -156,7 +162,11 @@ bool GamessQPosixClient::Execute(const wxString &data)
 	write(mFd, &len, sizeof(int));
 
 	// transmit the command
+#if wxCHECK_VERSION(2, 9, 0)
 	write(mFd, data.c_str(), len * sizeof(char));
+#else
+    write(mFd, data.c_str(), len * sizeof(wxChar));
+#endif
 
 	// read the result of the command
 	read(mFd, &c, 1);

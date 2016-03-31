@@ -221,7 +221,11 @@ void GamessQdPosixApp::ReadCommands()
 				// send the size of the result
 				write(mFds[i].fd, &len, sizeof(int));
 				// send the result
+#if wxCHECK_VERSION(2, 9, 0)
                 write(mFds[i].fd, retVal.c_str(), len * sizeof(char));
+#else
+                write(mFds[i].fd, retVal.c_str(), len * sizeof(wxChar));
+#endif
 			}
             delete[] data;
 		}
