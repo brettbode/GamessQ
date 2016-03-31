@@ -134,7 +134,7 @@ wxString GamessQPosixClient::Request(const wxString &data)
     read(mFd, output, len * sizeof(char));
     wxString retVal(output, len);
 #else
-    wxChar *output = new char[len];
+    wxChar *output = new wxChar[len];
     read(mFd, output, len * sizeof(wxChar));
     wxString retVal((wxChar *) output, len);
 #endif
