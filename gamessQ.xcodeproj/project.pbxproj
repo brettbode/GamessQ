@@ -256,6 +256,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
+				TargetAttributes = {
+					8B2998020E489B6D00624A73 = {
+						DevelopmentTeam = L4WQC2EXSW;
+					};
+					8B3B8ADF0A770A280041EA88 = {
+						DevelopmentTeam = L4WQC2EXSW;
+					};
+				};
 			};
 			buildConfigurationList = 1652DA0009D0AE7200B7783F /* Build configuration list for PBXProject "gamessQ" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -350,9 +358,13 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = L4WQC2EXSW;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 			};
@@ -363,7 +375,11 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = L4WQC2EXSW;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 			};
