@@ -19,21 +19,19 @@
 	<string>gamessq</string>
 	<key>CFBundleGetInfoString</key>
 	<string>A queue manager for GAMESS</string>
-	<key>CFBundleIconFile</key>
-	<string>GamessQ.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>gov.ameslab.GamessQ</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleName</key>
 	<string>GamessQ</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.2.2</string>
 	<key>CFBundleSignature</key>
 	<string>BMBg</string>
 	<key>CFBundleVersion</key>
-	<string>1.2.1</string>
-	<key>LSExecutableArchitectures</key>
-	<array>
-		<string>i386</string>
-	</array>
+	<string>1.2.2</string>
+	<key>LSPrefersCarbon</key>
+	<false/>
 </dict>
 </plist>

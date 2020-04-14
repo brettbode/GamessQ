@@ -52,7 +52,7 @@ int GamessQdPosixApp::OnRun()
 {
 	mMaxNumFds = 10; // a nice default
 	mFds = new struct pollfd[mMaxNumFds];
-	fd_set fdset;
+//	fd_set fdset;
 
 	// create the socket
 	if ((mSock = socket(AF_UNIX, SOCK_STREAM, 0)) < 0) {
@@ -70,7 +70,7 @@ int GamessQdPosixApp::OnRun()
 	memset(&name, 0, sizeof(struct sockaddr_un));
 	name.sun_family = AF_UNIX;
 	strcpy(name.sun_path, SOCKETNAME);
-	int len = sizeof(name.sun_family) + 1 + strlen(name.sun_path);
+	long len = sizeof(name.sun_family) + 1 + strlen(name.sun_path);
 
 	// unlink the socket, just in case there's still one lying around
 	unlink(SOCKETNAME);
