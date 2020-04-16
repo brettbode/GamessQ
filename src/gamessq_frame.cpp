@@ -362,7 +362,11 @@ void GamessQFrame::CreateControls()
 	
 	// initiate the queue manager, if this fails, we're toast
 	if (! mQueueManager.Init()) {
-		wxLogFatalError(wxT("Failed to start the backend!"));
+//        wxLogFatalError(wxT("Failed to start the backend!"));
+        // The above calls abort which appears to exit without a useful message on the Mac.
+        // Simply posting an alert here and letting the frontend run seems ok and at least
+        // gets the message to the user.
+        wxLogError(wxT("Failed to start the backend! Most functions will not work!"));
 	}
 	mActive = mQueueManager.IsActive();
 	AppMenu->Check(ID_PAUSEALL, ! mActive);
