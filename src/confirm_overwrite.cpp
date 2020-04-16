@@ -197,7 +197,7 @@ ConfirmOverwrite::ConfirmOverwrite(wxWindow *parent, wxArrayString &filenames)
 			SYMBOL_CONFIRMOVERWRITE_POSITION, SYMBOL_CONFIRMOVERWRITE_SIZE,
 			SYMBOL_CONFIRMOVERWRITE_STYLE );
 
-	int num = filenames.Count();
+	int num = (int) filenames.Count();
 	wxString text;
 	for (int i = 0; i < num; i ++) {
 		text << filenames.Item(i) << wxT('\n');

@@ -52,10 +52,10 @@ bool GamessQPosixClient::Connect()
 	name.sun_family = AF_UNIX;
 	strcpy(name.sun_path, SOCKETNAME);
 
-	int len = sizeof(name.sun_family) + 1 + strlen(name.sun_path);
+	size_t len = sizeof(name.sun_family) + 1 + strlen(name.sun_path);
 
 	// try to connect
-	if (connect(mFd, (struct sockaddr *)&name, len) < 0) {
+	if (connect(mFd, (struct sockaddr *)&name, (int) len) < 0) {
 		LOG_ERROR("connect");
 		close(mFd);
 		mFd = -1;

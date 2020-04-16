@@ -19,6 +19,7 @@
 
 #include <wx/app.h>
 #include <wx/filename.h>
+#include <wx/stdpaths.h>
 
 #include "gamessq_common.h"
 
@@ -83,6 +84,10 @@ bool JobQueueManager::Init()
 		wxFileName filename(wxTheApp->argv[0]);
 #ifdef __WXMAC__
 		filename.SetFullName(GAMESSQD_EXEC_NAME);
+        wxStandardPathsBase & gStdPaths = wxStandardPaths::Get();
+        filename = wxFileName(gStdPaths.GetExecutablePath()).GetPath() +
+                wxT("/../Resources/") + filename.GetFullName();
+
 		filename.MakeAbsolute();
 		wxLogDebug(filename.GetFullPath());
 		int pid = fork();
@@ -236,7 +241,7 @@ int JobQueueManager::GetNumJobs()
 	if (data.IsNumber()) {
 		data.ToLong(&retVal, 10);
 	}
-	return retVal;
+	return (int)retVal;
 }
 
 /*!
@@ -269,11 +274,11 @@ int *JobQueueManager::GetJobIds()
 	long tmp;
 	int *ids = new int[(int)num + 1];
 
-	ids[0] = num;
+	ids[0] = (int)num;
 
 	for (int i = 1; i <= (int)num; i++) {
 		if (idList.Item(i).ToLong(&tmp, 10)) {
-			ids[i] = tmp;
+			ids[i] = (int)tmp;
 		} else {
 			ids[i] = -1;
 		}
@@ -357,7 +362,7 @@ int JobQueueManager::GetNumProcessors(int index)
 	if (data.IsNumber()) {
 		data.ToLong(&retVal, 10);
 	}
-	return retVal;
+	return (int)retVal;
 }
 
 /*!

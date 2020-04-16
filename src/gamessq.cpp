@@ -293,6 +293,8 @@ int GamessQApp::OnRun() {
 				}
 			}
 			break;
+            default:
+                break;
 		}
 		delete queueIds;
 		delete mIds;
@@ -313,6 +315,8 @@ int GamessQApp::OnRun() {
 		queue.Init();
 		queue.SetActive(true);
 		break;
+    default:
+        break;
 	}
 
 	if (mGui) {
@@ -392,7 +396,7 @@ void GamessQApp::HandleCmd(int argc, wxChar **argv)
 	}
 
 	if (parser.Found(wxT("p"), &tmp)) {
-		mProcs = tmp;
+		mProcs = (int)tmp;
 	}
 
 	// we won't get to this point unless we have at least one parameter
@@ -448,7 +452,7 @@ void GamessQApp::HandleCmd(int argc, wxChar **argv)
 		for (; i < parser.GetParamCount(); i ++) {
 			arg = parser.GetParam(i);
 			if (arg.ToLong(&tmp, 10)) {
-				mIds[mNumItems] = tmp;
+				mIds[mNumItems] = (int)tmp;
 				mNumItems++;
 			} else {
 				fprintf(stderr, "Invalid job ID: ");
@@ -504,7 +508,7 @@ void GamessQApp::ListJobs()
 	JobList::compatibility_iterator node;
 	for (node = list.GetFirst(); node; node = node->GetNext()) {
 		if (node->GetData()->GetName().Len() > width) {
-			width = node->GetData()->GetName().Len();
+			width = (int) node->GetData()->GetName().Len();
 		}
 	}
 
@@ -534,7 +538,7 @@ void printTable(int numRows, wxArrayString *rows)
 	int columns = 0;
 	for (int i = 0; i < numRows; i ++) {
 		if (rows[i].Count() > columns) {
-			columns = rows[i].Count();
+			columns = (int) rows[i].Count();
 		}
 	}
 
@@ -546,7 +550,7 @@ void printTable(int numRows, wxArrayString *rows)
 	for (int i = 0; i < numRows; i ++) {
 		for (int j = 0; j < rows[i].Count(); j ++) {
 			if (width[j] < rows[i].Item(j).Len()) {
-				width[j] = rows[i].Item(j).Len();
+				width[j] = (int) rows[i].Item(j).Len();
 			}
 		}
 	}
@@ -556,13 +560,13 @@ void printTable(int numRows, wxArrayString *rows)
 		for (int j = 0; j < rows[i].Count(); j++) {
 			printf(" ");
 			printf(rows[i].Item(j).ToAscii());
-			int spaces = width[j] - rows[i].Item(j).Len();
+            int spaces = (int) (width[j] - rows[i].Item(j).Len());
 			for (int k = 0; k < spaces; k ++) {
 				printf(" ");
 			}
 		}
 		printf("\n");
 	}
-	delete width;
+	delete[] width;
 }
 

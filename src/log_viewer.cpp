@@ -61,7 +61,7 @@ LogViewer::LogViewer(wxWindow *parent, wxArrayString filenames)
 	mSizer->Add(mNotebook, 1, wxEXPAND | wxALL, 5);
 
 	mLogPages = new LogPage*[filenames.Count()];
-	mNumPages = filenames.Count();
+	mNumPages = (int) filenames.Count();
 	for (int i = 0; i < mNumPages; i ++) {
 		mLogPages[i] = new LogPage(this, filenames.Item(i));
 		mNotebook->AddPage(mLogPages[i]->mPage, mLogPages[i]->mName);

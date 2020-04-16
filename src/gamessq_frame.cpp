@@ -376,7 +376,7 @@ void GamessQFrame::CreateControls()
 	wxString stringFreq;
 	long freq;
 	if (mConfig->Read(wxT("Refresh Frequency"), &freq)) {
-		mRefreshFrequency = freq;
+		mRefreshFrequency = (int) freq;
 	} else {
 		mConfigDialog->SetRefreshFrequency(mRefreshFrequency / 1000);
 		mConfigDialog->SetGamessPath(mQueueManager.GetGamessDir());
@@ -467,14 +467,14 @@ void GamessQFrame::OnADDClick( wxCommandEvent& event )
 void GamessQFrame::OnCancelClick( wxCommandEvent& event )
 {
 	GreyButtons();
-	int index = jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
+	int index = (int) jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
 			wxLIST_STATE_SELECTED);
 	while (index != -1) {
 		Job *job = mJobList.Item(index)->GetData();
 		if (CanCancel(job)) {
 			mQueueManager.Cancel(job->GetId());
 		}
-		index = jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
+		index = (int) jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
 				wxLIST_STATE_SELECTED);
 	}
 	RefreshList();
@@ -491,15 +491,14 @@ void GamessQFrame::OnCancelClick( wxCommandEvent& event )
 void GamessQFrame::OnPauseClick( wxCommandEvent& event )
 {
 	GreyButtons();
-	int index = jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
+	int index = (int) jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
 			wxLIST_STATE_SELECTED);
-	int status;
 	while (index != -1) {
 		Job *job = mJobList.Item(index)->GetData();
 		if (CanPause(job)) {
 			mQueueManager.Pause(job->GetId());
 		}
-		index = jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
+		index = (int) jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
 				wxLIST_STATE_SELECTED);
 	}
 	RefreshList();
@@ -516,15 +515,14 @@ void GamessQFrame::OnPauseClick( wxCommandEvent& event )
 void GamessQFrame::OnResumeClick( wxCommandEvent& event )
 {
 	GreyButtons();
-	int index = jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
+	int index = (int) jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
 			wxLIST_STATE_SELECTED);
-	int status;
 	while (index != -1) {
 		Job *job = mJobList.Item(index)->GetData();
 		if (CanResume(job)) {
 			mQueueManager.Resume(job->GetId());
 		}
-		index = jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
+		index = (int) jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
 				wxLIST_STATE_SELECTED);
 	}
 	RefreshList();
@@ -595,11 +593,11 @@ int *GamessQFrame::GetSelectedStatus() {
 	for (int i = 0; i < 8; i ++) {
 		status[i] = 0;
 	}
-	int index = jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
+	int index = (int) jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
 			wxLIST_STATE_SELECTED);
 	while (index != -1) {
 		status[mJobList.Item(index)->GetData()->GetStatus()] ++;
-		index = jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
+		index = (int) jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
 				wxLIST_STATE_SELECTED);
 	}
 	return status;
@@ -959,7 +957,7 @@ void GamessQFrame::RefreshList()
 	// add new entries to the control for the new jobs
 	for (;node; i ++, node = node->GetNext()) {
 		Job *job = node->GetData();
-		int index = jobListCtrl->InsertItem(i, job->GetName());
+		int index = (int) jobListCtrl->InsertItem(i, job->GetName());
 		jobListCtrl->SetItemData(index, job->GetId());
 		wxString procs;
 		procs << job->GetNumProcessors();
@@ -991,7 +989,7 @@ void GamessQFrame::NewJob()
 			int procs = mJobOptionsDialog->GetNumProcessors();
 			wxArrayString paths;
 			fileChooser->GetPaths(paths);
-			int count = paths.GetCount();
+			int count = (int) paths.GetCount();
 			for(int i = 0; i < count; i ++) {
 				mQueueManager.Add(paths.Item(i), procs);
 			}
@@ -1031,12 +1029,12 @@ void GamessQFrame::OnJoblistctrlDeselected( wxListEvent& event )
 void GamessQFrame::OnRemoveClick( wxCommandEvent& event )
 {
 	GreyButtons();
-	int index = jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
+	int index = (int) jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
 			wxLIST_STATE_SELECTED);
 	while (index != -1) {
 		Job *job = mJobList.Item(index)->GetData();
 		mQueueManager.Remove(job->GetId());
-		index = jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
+		index = (int) jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
 				wxLIST_STATE_SELECTED);
 	}
 	RefreshList();
@@ -1075,7 +1073,7 @@ void GamessQFrame::OnJoblistctrlRightClick( wxListEvent& event )
 void GamessQFrame::OnViewlogsClick( wxCommandEvent& event )
 {
 	wxArrayString filenames;
-	int index = jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
+	int index = (int) jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
 			wxLIST_STATE_SELECTED);
 	if (index == -1) {
 		return;
@@ -1087,7 +1085,7 @@ void GamessQFrame::OnViewlogsClick( wxCommandEvent& event )
 			name.SetExt(wxT("log"));
 			filenames.Add(name.GetFullPath());
 		}
-		index = jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
+		index = (int) jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
 				wxLIST_STATE_SELECTED);
 	}
 	LogViewer *viewer = new LogViewer(this, filenames);
@@ -1200,7 +1198,7 @@ void GamessQFrame::OnSavefolderClick( wxCommandEvent& event )
 	wxDirDialog dialog(this, wxT("Select Output Folder"), wxT(""),
 			wxDD_NEW_DIR_BUTTON);
 	if (dialog.ShowModal() == wxID_OK) {
-		int index = jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
+		int index = (int) jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
 				wxLIST_STATE_SELECTED);
 		if (index == -1) {
 			return;
@@ -1220,7 +1218,7 @@ void GamessQFrame::OnSavefolderClick( wxCommandEvent& event )
 				i --;
 				num --;
 			}
-			index = jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
+			index = (int) jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
 					wxLIST_STATE_SELECTED);
 		}
 		for (int i = 0; i < num; i ++) {
@@ -1241,7 +1239,7 @@ void GamessQFrame::OnSavefolderClick( wxCommandEvent& event )
 		if (overwrites.GetCount() > 0) {
 			ConfirmOverwrite confirm(this, overwrites);
 			if (confirm.ShowModal() != wxID_OK) {
-				delete ids;
+                delete[] ids;
 				return;
 			}
 		}
@@ -1249,7 +1247,7 @@ void GamessQFrame::OnSavefolderClick( wxCommandEvent& event )
 			mQueueManager.Save(ids[i], savenames.Item(i));
 		}
 
-		delete ids;
+		delete[] ids;
 	}
 }
 
@@ -1336,7 +1334,7 @@ void GamessQFrame::OnSaveasClick( wxCommandEvent& event )
 void GamessQFrame::OnMacmolpltClick( wxCommandEvent& event )
 {
 	wxArrayString filenames;
-	int index = jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
+	int index = (int) jobListCtrl->GetNextItem(-1, wxLIST_NEXT_ALL,
 			wxLIST_STATE_SELECTED);
 	fprintf(stdout, "received request for MacMolPlt using index = %d\n", index);
 	if (index == -1) {
@@ -1359,7 +1357,7 @@ void GamessQFrame::OnMacmolpltClick( wxCommandEvent& event )
 			filenames.Add(name.GetFullPath());
 			wxLogMessage(name.GetFullPath());
 		}
-		index = jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
+		index = (int) jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
 				wxLIST_STATE_SELECTED);
 	}
 
