@@ -122,7 +122,7 @@ bool GamessQServer::OnExecute(const wxString &data)
 			item.Mid(0, index).ToLong(&procs, 10);
 			item = item.Mid(index + 1);
 
-			job = NEW_JOB(item, procs);
+			job = NEW_JOB(item, (int) procs);
 			if (job) {
 				mJobQueue.Append(job);
 				retVal = true;
@@ -547,7 +547,7 @@ void GamessQServer::LoadQueue()
 		debug << data << wxT(" Could not be converted to an integer.");
 		wxLogDebug(debug);
 	}
-	int num = tmp;
+	int num = (int) tmp;
 
 	data = ReadLine(file);
 	if (! data.ToLong(&tmp, 10)) {
@@ -555,7 +555,7 @@ void GamessQServer::LoadQueue()
 		debug << data << wxT(" Could not be converted to an integer.");
 		wxLogDebug(debug);
 	}
-	Job::SetNextId(tmp);
+	Job::SetNextId((int)tmp);
 
 	// read all the job information
 	for (int i = 0; i < num && (! file->Eof()); i ++) {
@@ -577,7 +577,7 @@ void GamessQServer::LoadQueue()
 			debug << data << wxT(" Could not be converted to an integer.");
 			wxLogDebug(debug);
 		}
-		id = tmp;
+		id = (int) tmp;
 
 		// get name
 		name = ReadLine(file);
@@ -589,7 +589,7 @@ void GamessQServer::LoadQueue()
 			debug << data << wxT(" Could not be converted to an integer.");
 			wxLogDebug(debug);
 		}
-		procs = tmp;
+		procs = (int) tmp;
 
 		// get spoolFileName
 		spoolFileName = ReadLine(file);
@@ -669,7 +669,7 @@ void GamessQServer::SaveQueue()
 	wxString data;
 
 	// write initial information
-	int num = mJobQueue.GetCount();
+	int num = (int) (mJobQueue.GetCount());
 	data << num << wxT('\n');
 	if (num > 0) {
 		data << Job::GetNextId() << wxT('\n');
