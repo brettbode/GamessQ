@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -10,28 +12,44 @@
 				<string>inp</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>GAMESSInput</string>
+			<string>GAMESSinput</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>gamessq</string>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleGetInfoString</key>
 	<string>A queue manager for GAMESS</string>
+	<key>CFBundleIconFile</key>
+	<string>GamessQ.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>GamessQ</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
-	<string>APPL</string>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.2.2</string>
 	<key>CFBundleSignature</key>
 	<string>BMBg</string>
 	<key>CFBundleVersion</key>
 	<string>1.2.2</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.utilities</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>LSPrefersCarbon</key>
 	<false/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2020 Brett Bode. All rights reserved.</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSSupportsAutomaticTermination</key>
+	<true/>
+	<key>NSSupportsSuddenTermination</key>
+	<true/>
 </dict>
 </plist>
