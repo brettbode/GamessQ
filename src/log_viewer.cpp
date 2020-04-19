@@ -47,7 +47,7 @@ LogViewer::LogViewer(wxWindow *parent, wxArrayString filenames)
 	Create(parent, -1, title, wxDefaultPosition, wxSize(600, 480),
 			wxDEFAULT_FRAME_STYLE | wxRESIZE_BORDER);
     SetIcon(GetGamessQIcon());
-	SetBackgroundColour(wxNullColour);
+//	SetBackgroundColour(wxNullColour);
 
 	if (filenames.Count() == 0) {
 		return;
