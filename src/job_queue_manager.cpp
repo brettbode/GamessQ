@@ -81,13 +81,18 @@ bool JobQueueManager::Init()
 
 	// if we can't connect, start the backend
 	if (! connected) {
-		wxFileName filename(wxTheApp->argv[0]);
 #ifdef __WXMAC__
-		filename.SetFullName(GAMESSQD_EXEC_NAME);
-        wxStandardPathsBase & gStdPaths = wxStandardPaths::Get();
-        filename = wxFileName(gStdPaths.GetExecutablePath()).GetPath() +
-                wxT("/../Resources/") + filename.GetFullName();
-
+		wxFileName filename(wxTheApp->argv[0]);
+        filename.RemoveLastDir();
+        filename.RemoveLastDir();
+        filename.RemoveLastDir();
+        filename.SetFullName(GAMESSQD_EXEC_NAME);
+        wxLogDebug(filename.GetFullPath());
+        if (! filename.FileExists()) {
+            // Try /usr/local/bin instead
+            filename = wxT("/usr/local/bin/");
+            filename.SetFullName(GAMESSQD_EXEC_NAME);
+        }
 		filename.MakeAbsolute();
 		wxLogDebug(filename.GetFullPath());
 		int pid = fork();
@@ -97,7 +102,8 @@ bool JobQueueManager::Init()
 			exit(1);
 		}
 #else /* __WXMAC__ */
-		filename.SetFullName(GAMESSQD_EXEC_NAME);
+        wxFileName filename(wxTheApp->argv[0]);
+        filename.SetFullName(GAMESSQD_EXEC_NAME);
 		wxExecute(filename.GetFullPath());
 #endif
 		// wx will complain in windows if it can't connect
