@@ -103,5 +103,8 @@ enum {
 //! Name of the server log file
 #define QUEUE_LOG_FILENAME	wxT("queue.log")
 
+//! General function to validate that a path does not contain any spaces or other nonallowed characters.
+bool ValidatePath(const wxString & t);
+
 #endif /* __GAMESSQ_COMMON_H__ */
 

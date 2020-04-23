@@ -54,7 +54,14 @@ void Job::SetSpoolDir(wxString newSpoolDir)
 	// set a default if none is available
 	if (newSpoolDir.IsEmpty()) {
 		// this is the first run of GamessQ
+#ifdef __WXMAC__
+		//The OSX version defaults the data dir to a path with a space in it which
+		//the gamess scripts do not like.
+		//This should set it to ~/Documents/gamessqd
+		spoolDir = wxStandardPaths::Get().GetDocumentsDir() + "/gamessqd";
+#else
 		spoolDir = wxStandardPaths::Get().GetUserDataDir();
+#endif
 	} else {
 		spoolDir = newSpoolDir;
 	}

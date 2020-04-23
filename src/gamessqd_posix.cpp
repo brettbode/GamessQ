@@ -76,7 +76,7 @@ int GamessQdPosixApp::OnRun()
 	unlink(SOCKETNAME);
 
 	// bind the socket
-	if (bind(mSock, (struct sockaddr *)&name, len) < 0) {
+	if (bind(mSock, (struct sockaddr *)&name, (int) len) < 0) {
 		LOG_ERROR("bind");
 	}
 	wxLogDebug(wxT("Socket Bound."));
@@ -90,7 +90,7 @@ int GamessQdPosixApp::OnRun()
 	bool running = true;
 	// don't go into the loop until we have something. If the client doesn't
 	// connect inside of 10 seconds, something's wrong.
-	poll(mFds, mNumFds, 10000);
+	poll(mFds, mNumFds, 100000);
 	while (running) {
 		// block until activity or 500ms
 		int n = poll(mFds, mNumFds, 500);
@@ -217,7 +217,7 @@ void GamessQdPosixApp::ReadCommands()
 			} else if (type == (char)SOCK_REQUEST) {
 				wxString retVal = mServer->OnRequest(data);
                 wxLogMessage(retVal);
-				len = retVal.Len();
+				len = (int) retVal.Len();
 				// send the size of the result
 				write(mFds[i].fd, &len, sizeof(int));
 				// send the result

@@ -374,10 +374,16 @@ void GamessQFrame::CreateControls()
 	// load settings
 	mConfig = new wxConfig(WX_CONFIG_APPNAME);
 	wxString stringFreq;
-	long freq;
+	long freq=0;
+	//Attempt to read the only Gui specific pref. If successful a prefs file must exist.
 	if (mConfig->Read(wxT("Refresh Frequency"), &freq)) {
 		mRefreshFrequency = (int) freq;
-	} else {
+	}
+	//If no prefs file or the spoolDir is invalid through up the prefs
+	bool path_test = ValidatePath(mQueueManager.GetSpoolDir());
+	if (!path_test)
+		wxLogError(wxT("Error: Non-allowed characters in the spool Dir. Please correct before continuing!"));
+	if ((freq==0)|| ! path_test ){
 		mConfigDialog->SetRefreshFrequency(mRefreshFrequency / 1000);
 		mConfigDialog->SetGamessPath(mQueueManager.GetGamessDir());
 		mConfigDialog->SetSpoolDir(mQueueManager.GetSpoolDir());

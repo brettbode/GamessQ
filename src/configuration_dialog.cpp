@@ -35,6 +35,7 @@
 
 #include "configuration_dialog.h"
 #include "resources.h"
+#include "gamessq_common.h"
 #include <wx/filename.h>
 
 ////@begin XPM images
@@ -159,6 +160,9 @@ void ConfigurationDialog::CreateControls()
     wxStaticText* itemStaticText7 = new wxStaticText( itemDialog1, wxID_STATIC, _("Seconds"), wxDefaultPosition, wxDefaultSize, 0 );
     itemBoxSizer4->Add(itemStaticText7, 0, wxALIGN_CENTER_VERTICAL|wxRIGHT|wxTOP|wxBOTTOM, 5);
 
+	wxStaticText* itemStaticText8a = new wxStaticText( itemDialog1, wxID_STATIC, _("Paths should not contain spaces or non-ASCII characters!"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE );
+    itemBoxSizer3->Add(itemStaticText8a, 1, wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP, 5);
+
     wxStaticText* itemStaticText8 = new wxStaticText( itemDialog1, wxID_STATIC, _("Spool Directory:"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE );
     itemBoxSizer3->Add(itemStaticText8, 1, wxALIGN_LEFT|wxLEFT|wxRIGHT|wxTOP, 5);
 
@@ -254,7 +258,12 @@ int ConfigurationDialog::GetRefreshFrequency()
  */
 void ConfigurationDialog::SetSpoolDir(wxString spoolDir)
 {
-	if (spoolDir.Len()>0) mSpoolDir->SetValue(spoolDir);
+	if (spoolDir.Len()>0) {
+		if (ValidatePath(spoolDir))
+			mSpoolDir->SetValue(spoolDir);
+		else
+			wxLogError(wxT("Non-allowed characters in the path. Please retry!"));
+	}
 }
 
 /*! \return The value of the "Spool Directory" field.
@@ -270,7 +279,12 @@ wxString ConfigurationDialog::GetSpoolDir()
  */
 void ConfigurationDialog::SetGamessPath(wxString gamessPath)
 {
-	if (gamessPath.Len()>0) mGamessPath->SetValue(gamessPath);
+	if (gamessPath.Len()>0) {
+		if (ValidatePath(gamessPath))
+			mGamessPath->SetValue(gamessPath);
+		else
+			wxLogError(wxT("Non-allowed characters in the path. Please retry!"));
+	}
 }
 
 /*! \return The value of the "GAMESS Directory" field.
@@ -303,9 +317,8 @@ void ConfigurationDialog::OnGamessBrowseClick( wxCommandEvent& event )
 {
 	wxDirDialog *dialog = new wxDirDialog(this, wxT("Select GAMESS Directory"),
 			GetGamessPath(), wxDD_DEFAULT_STYLE);
-	if (dialog->ShowModal() == wxID_OK) {
+	if (dialog->ShowModal() == wxID_OK)
 		SetGamessPath(dialog->GetPath());
-	}
 	delete dialog;
 }
 
@@ -315,7 +328,7 @@ void ConfigurationDialog::OnGamessBrowseClick( wxCommandEvent& event )
 
 void ConfigurationDialog::OnLogsClick( wxCommandEvent& event )
 {
-	wxFileName filename(mSpoolDir->GetValue(), wxT("server.log"));
+	wxFileName filename(mSpoolDir->GetValue(), QUEUE_LOG_FILENAME);
 	wxArrayString arr;
 	arr.Add(filename.GetFullPath());
 	LogViewer *viewer = new LogViewer(this, arr);
@@ -329,6 +342,14 @@ void ConfigurationDialog::OnLogsClick( wxCommandEvent& event )
 
 void ConfigurationDialog::OnOkClick( wxCommandEvent& event )
 {
+	if (!ValidatePath(mSpoolDir->GetValue())) {
+		wxLogError(wxT("Invalid characters in the spool path. Please try again."));
+		return;
+	}
+	if (!ValidatePath(mGamessPath->GetValue())) {
+		wxLogError(wxT("Invalid characters in the path to GAMESS. Please try again."));
+		return;
+	}
 	wxCommandEvent okEvent = wxCommandEvent(wxEVT_COMMAND_MENU_SELECTED,
 			ID_SETUP_OK);
 #if wxCHECK_VERSION(3, 0, 0)
@@ -339,3 +360,6 @@ void ConfigurationDialog::OnOkClick( wxCommandEvent& event )
 	Show(false);
 }
 
+bool ValidatePath(const wxString & test) {
+	return (test.IsAscii() && !(test.Contains(" ")));
+}

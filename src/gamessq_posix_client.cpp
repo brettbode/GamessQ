@@ -115,7 +115,7 @@ wxString GamessQPosixClient::Request(const wxString &data)
 	write(mFd, &c, 1);
 
 	// transmit the length of the request
-	int len = data.Len();
+	int len = (int) data.Len();
 	write(mFd, &len, sizeof(int));
 
 	// transmit the request
@@ -158,7 +158,7 @@ bool GamessQPosixClient::Execute(const wxString &data)
 	write(mFd, &c, 1);
 
 	// transmit the length of the command
-	int len = data.Len();
+	int len = (int) data.Len();
 	write(mFd, &len, sizeof(int));
 
 	// transmit the command
