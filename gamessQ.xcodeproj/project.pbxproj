@@ -102,6 +102,7 @@
 		8BF046022447F3EE0085B4F4 /* posix_job.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = posix_job.h; path = src/posix_job.h; sourceTree = SOURCE_ROOT; };
 		8BF046032447F3EE0085B4F4 /* gamessqd_posix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gamessqd_posix.cpp; path = src/gamessqd_posix.cpp; sourceTree = SOURCE_ROOT; };
 		8BF04609244BBAEA0085B4F4 /* GamessQRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GamessQRelease.entitlements; sourceTree = SOURCE_ROOT; };
+		8BF0460A244D2A550085B4F4 /* gamessqdRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gamessqdRelease.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +200,7 @@
 		8BF045F82447F3910085B4F4 /* gamessqd */ = {
 			isa = PBXGroup;
 			children = (
+				8BF0460A244D2A550085B4F4 /* gamessqdRelease.entitlements */,
 				8BF046032447F3EE0085B4F4 /* gamessqd_posix.cpp */,
 				8BF046002447F3EE0085B4F4 /* gamessqd_posix.h */,
 				8BF045FE2447F3EE0085B4F4 /* gamessqd.cpp */,
@@ -653,7 +655,7 @@
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = F28F22W7P9;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				GCC_CW_ASM_SYNTAX = NO;
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;

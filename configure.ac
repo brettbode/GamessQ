@@ -15,7 +15,7 @@
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-AC_INIT(GamessQ, 1.2.1, MMP.Guy@gmail.com)
+AC_INIT(GamessQ, 1.2.2, MMP.Guy@gmail.com)
 AC_CONFIG_SRCDIR(src/gamessq.cpp)
 AC_CONFIG_AUX_DIR(config)
 AC_CANONICAL_TARGET

@@ -6,7 +6,7 @@
 <title>GamessQ</title>
 </head>
 <body>
-<h1 align="center">GamessQ Version 1.2.1</h1>
+<h1 align="center">GamessQ Version 1.2.2</h1>
 <h2 align="center">A companion to <a href="http://www.msg.chem.iastate.edu/GAMESS/">GAMESS</a> and <a href="http://brettbode.github.io/wxmacmolplt/">MacMolPlt</a></h2>
 <h3 align="left">What is it?</h3>
 <p align="left">Very simply gamessQ provides a queueing functionality for GAMESS computations running on your local desktop/laptop. gamessQ is a gui application and provides drag and drop fucntionality for running jobs with gamess that would otherwise require the use of the command line.</p>
@@ -39,7 +39,8 @@ GUI (see the Man page for details)</li>
 <h2>A Quick Walkthrough:</h2>
 <p>The first time you start GamessQ, you should be presented with a
 configuration dialog. The most important things here are the spool directory
-and the GAMESS path.</p>
+and the GAMESS path. Note: these paths are passed to csh scripts which do not like spaces or other
+special characters so please use a simple path with no spaces.</p>
 <p><b>Spool Directory:</b> This is the location where gamessq will store all
 its temporary data. Every time you add a job to the queue, the input file will
 get copied here, and the output files will be stored here until the job is
