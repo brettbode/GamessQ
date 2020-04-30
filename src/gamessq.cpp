@@ -439,9 +439,7 @@ void GamessQApp::HandleCmd(int argc, wxChar **argv)
 				mFilenames.Add(arg);
 				mNumItems ++;
 			} else {
-				fprintf(stderr, "Invalid input file: ");
-				fprintf(stderr, arg.ToAscii());
-				fprintf(stderr, "\n");
+				fprintf(stderr, "Invalid input file: %s\n", (const char *)arg.ToAscii());
 			}
 		}
 		break;
@@ -455,9 +453,7 @@ void GamessQApp::HandleCmd(int argc, wxChar **argv)
 				mIds[mNumItems] = (int)tmp;
 				mNumItems++;
 			} else {
-				fprintf(stderr, "Invalid job ID: ");
-				fprintf(stderr, arg.ToAscii());
-				fprintf(stderr, "\n");
+				fprintf(stderr, "Invalid job ID: %s\n", (const char *)arg.ToAscii());
 			}
 		}
 		break;
@@ -466,8 +462,7 @@ void GamessQApp::HandleCmd(int argc, wxChar **argv)
 	case PAUSEALL:
 	case RESUMEALL:
 		if (parser.GetParamCount() != 1) {
-			fprintf(stderr, cmd.ToAscii());
-			fprintf(stderr, " does not take any arguments.\n");
+			fprintf(stderr, "%s does not take any arguments.\n", (const char *)cmd.ToAscii());
 			mRetVal = 1;
 			return;
 		}
@@ -558,8 +553,7 @@ void printTable(int numRows, wxArrayString *rows)
 	wxString format;
 	for (int i = 0; i < numRows; i ++) {
 		for (int j = 0; j < rows[i].Count(); j++) {
-			printf(" ");
-			printf(rows[i].Item(j).ToAscii());
+			printf(" %s", (const char *) rows[i].Item(j).ToAscii());
             int spaces = (int) (width[j] - rows[i].Item(j).Len());
 			for (int k = 0; k < spaces; k ++) {
 				printf(" ");

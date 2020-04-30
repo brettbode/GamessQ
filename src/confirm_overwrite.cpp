@@ -135,7 +135,7 @@ void ConfirmOverwrite::CreateControls()
     itemBoxSizer3->Add(itemStaticBitmap4, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     wxStaticText* itemStaticText5 = new wxStaticText( itemDialog1, wxID_STATIC, _("The following files will be overwritten. Are you Sure?"), wxDefaultPosition, wxDefaultSize, 0 );
-    itemStaticText5->SetFont(wxFont(10, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Sans")));
+    itemStaticText5->SetFont(wxFont(10, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Sans")));
     itemStaticText5->Wrap(420);
     itemBoxSizer3->Add(itemStaticText5, 0, wxGROW|wxALL, 5);
 
