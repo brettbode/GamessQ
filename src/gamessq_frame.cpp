@@ -1373,10 +1373,6 @@ void GamessQFrame::OnMacmolpltClick( wxCommandEvent& event )
 	char **args = new char*[filenames.GetCount() + 1];
 	args[filenames.GetCount()] = NULL;
 
-	args[0] = "open";
-	args[0] = "-a";
-	args[0] = "wxmacmolplt";
-
 	for (int i = 0; i < filenames.GetCount(); i ++) {
 		wxString arg = filenames.Item(i);
 		args[i] = new char[arg.Len() + 1];
