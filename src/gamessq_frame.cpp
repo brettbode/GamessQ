@@ -1351,7 +1351,7 @@ void GamessQFrame::OnMacmolpltClick( wxCommandEvent& event )
 	// open will need to take a fiew more arguments when working with a mac
 	filenames.Add(wxT("open"));
 	filenames.Add(wxT("-a"));
-	filenames.Add(wxT("wxmacmolplt"));
+	filenames.Add(wxT("wxmacmolplt.app"));
 #endif /* __WXMAC__ */
 
 	while (index != -1) {
@@ -1361,7 +1361,7 @@ void GamessQFrame::OnMacmolpltClick( wxCommandEvent& event )
 			wxFileName name = (mQueueManager.GetFileName(jobId));
 			name.SetExt(wxT("log"));
 			filenames.Add(name.GetFullPath());
-			wxLogMessage(name.GetFullPath());
+//			wxLogDebug(name.GetFullPath());
 		}
 		index = (int) jobListCtrl->GetNextItem(index, wxLIST_NEXT_ALL,
 				wxLIST_STATE_SELECTED);
