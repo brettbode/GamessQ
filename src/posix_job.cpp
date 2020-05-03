@@ -74,12 +74,6 @@ void PosixJob::Start()
 	}
 #endif
 
-	if (gamessname.IsEmpty()) {
-		wxLogError(wxT("Could not find GAMESS"));
-		mStatus = STATUS_ERROR;
-		return;
-	}
-
 	wxString procs;
 	procs << mNumProcessors;
 	wxFileName name(mSpoolFileName);
@@ -88,6 +82,16 @@ void PosixJob::Start()
 	name.SetExt(wxT("log"));
 	wxString logfile = name.GetFullPath();
 
+	if (gamessname.IsEmpty()) {
+		wxLogError(wxT("Could not find GAMESS gms script"));
+		//Create the planning log file and echo the error into it so the user sees it
+		wxFile log(logfile, wxFile::write);
+		log.Write(wxT("Could not find GAMESS gms script at : "));
+		log.Write(gamessDir+wxT("gms"));
+		mStatus = STATUS_ERROR;
+		return;
+	}
+	
 	wxString command;
 	command << wxT("Exec: ") << gamessname;
 	command << wxT(" -n ") << procs;
