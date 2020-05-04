@@ -383,6 +383,16 @@ void GamessQFrame::CreateControls()
 	bool path_test = ValidatePath(mQueueManager.GetSpoolDir());
 	if (!path_test)
 		wxLogError(wxT("Error: Non-allowed characters in the spool Dir. Please correct before continuing!"));
+#ifndef __WXMSW__
+	//Check to see if the gms script is in the proper path
+	wxFileName name(mQueueManager.GetGamessDir(), wxT("gms"));
+	name.MakeAbsolute();
+	wxString gamessname = name.GetFullPath();
+	if (! wxFileExists(gamessname)) {
+		wxLogError(wxT("Error: Required gms script not present in the GAMESS path. Please set the path to the gms script before running jobs."));
+		path_test = false;
+	}
+#endif
 	if ((freq==0)|| ! path_test ){
 		mConfigDialog->SetRefreshFrequency(mRefreshFrequency / 1000);
 		mConfigDialog->SetGamessPath(mQueueManager.GetGamessDir());

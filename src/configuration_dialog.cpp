@@ -350,6 +350,16 @@ void ConfigurationDialog::OnOkClick( wxCommandEvent& event )
 		wxLogError(wxT("Invalid characters in the path to GAMESS. Please try again."));
 		return;
 	}
+#ifndef __WXMSW__
+	//Check to see if the gms script is in the proper path
+	wxFileName name(mGamessPath->GetValue(), wxT("gms"));
+	name.MakeAbsolute();
+	wxString gamessname = name.GetFullPath();
+	if (! wxFileExists(gamessname)) {
+		wxLogError(wxT("Error: Required gms script not present in the GAMESS path. Please set the path to the gms script before running jobs."));
+		return;
+	}
+#endif
 	wxCommandEvent okEvent = wxCommandEvent(wxEVT_COMMAND_MENU_SELECTED,
 			ID_SETUP_OK);
 #if wxCHECK_VERSION(3, 0, 0)
