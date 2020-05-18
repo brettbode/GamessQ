@@ -92,7 +92,10 @@ bool JobQueueManager::Init()
             // Try /usr/local/bin instead
             filename = wxT("/usr/local/bin/");
             filename.SetFullName(GAMESSQD_EXEC_NAME);
-        }
+			if (! filename.FileExists()) {
+				wxLogError(wxT("Unable to locate backend daemon in /usr/local/bin or where the app is located."));
+			}
+		}
 		filename.MakeAbsolute();
 		wxLogDebug(filename.GetFullPath());
 		int pid = fork();
