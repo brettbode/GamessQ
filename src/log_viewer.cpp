@@ -109,7 +109,7 @@ void LogViewer::Refresh()
 	}
 
 	if (mNumPages == 0) {
-		Close();
+//		Close();
 	} else if (mNotebook && mNumPages == 1) {
 		mLogPages[0]->mTextCtrl->Reparent(this);
 		delete mNotebook;
